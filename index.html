@@ -23,7 +23,6 @@
         }
         
         canvas { 
-
             position: fixed; 
             top: 0; 
             left: 0; 
@@ -54,7 +53,6 @@
             transform: translate(-50%, -50%);
             color: #ffdd00;
             font-size: 18px;
-
             text-align: center;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 40, 0.98));
             padding: 25px;
@@ -80,7 +78,6 @@
             width: 40px;
             height: 40px;
             margin: 20px auto;
-
             border: 4px solid rgba(255, 221, 0, 0.3);
             border-top-color: #ffdd00;
             border-radius: 50%;
@@ -109,7 +106,6 @@
             backdrop-filter: blur(10px);
         }
         
-
         .header h1 {
             background: linear-gradient(45deg, #ffdd00, #ff8c00);
             -webkit-background-clip: text;
@@ -140,7 +136,6 @@
             background: rgba(0, 0, 0, 0.85);
             padding: 15px;
             border-radius: 15px;
-
             border: 2px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
             z-index: 200;
@@ -170,7 +165,6 @@
         }
         
         .control-btn:hover, .control-btn:active {
-
             background: linear-gradient(145deg, rgba(100, 100, 150, 0.95), rgba(70, 70, 110, 0.98));
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
             border-bottom-color: rgba(255, 215, 0, 0.9);
@@ -194,10 +188,9 @@
             background: linear-gradient(145deg, rgba(70, 200, 70, 0.95), rgba(50, 180, 50, 0.98));
         }
         
-        /* ИСПРАВЛЕННЫЙ TOOLTIP */
+        /* ИСПРАВЛЕННЫЙ СТИЛЬ TOOLTIP */
         .tooltip {
-
-            position: fixed;
+            position: fixed; /* Изменено с absolute на fixed */
             background: rgba(0, 0, 0, 0.97);
             color: white;
             padding: 15px;
@@ -210,9 +203,33 @@
             box-shadow: 0 0 40px rgba(255, 221, 0, 0.4);
             max-width: 320px;
             min-width: 280px;
-            z-index: 10000;
+            z-index: 10000; /* Увеличено для надежности */
             line-height: 1.4;
             backdrop-filter: blur(10px);
+            /* Гарантируем, что подсказка не выйдет за экран */
+            max-width: 90vw; /* Максимум 90% ширины экрана */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Для очень маленьких экранов */
+        @media (max-width: 480px) {
+            .tooltip {
+                max-width: 95vw;
+                padding: 12px;
+                font-size: 13px;
+                min-width: 250px;
+            }
+        }
+        
+        /* Для совсем крошечных экранов */
+        @media (max-width: 350px) {
+            .tooltip {
+                max-width: 98vw;
+                min-width: 220px;
+                padding: 10px;
+                font-size: 12px;
+            }
         }
         
         .star-name {
@@ -220,6 +237,7 @@
             font-weight: bold;
             margin-bottom: 8px;
             font-size: 16px;
+            word-break: break-word;
         }
         
         .star-info {
@@ -227,7 +245,7 @@
             font-size: 13px;
             margin-bottom: 6px;
             line-height: 1.3;
-
+            word-break: break-word;
         }
         
         .overlay {
@@ -256,7 +274,6 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
             max-height: 85vh;
             overflow-y: auto;
-
         }
         
         .modal-header {
@@ -286,7 +303,6 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-
             flex-shrink: 0;
             border-bottom: 3px solid rgba(255, 0, 0, 0.6);
         }
@@ -316,7 +332,6 @@
             padding: 12px;
             background: rgba(10, 10, 20, 0.9);
             border: 2px solid rgba(65, 105, 225, 0.5);
-
             border-radius: 10px;
             color: white;
             font-size: 15px;
@@ -344,7 +359,6 @@
         }
         
         .value-options {
-
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
@@ -372,7 +386,6 @@
         .value-option.selected {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 185, 0, 0.3));
             border-color: rgba(255, 215, 0, 0.8);
-
             color: #ffdd00;
         }
         
@@ -402,7 +415,6 @@
             gap: 15px;
             margin-bottom: 25px;
         }
-
         
         .stat-card {
             background: linear-gradient(135deg, rgba(30, 30, 50, 0.9), rgba(20, 20, 40, 0.95));
@@ -431,7 +443,6 @@
             width: 100%;
             background: linear-gradient(45deg, #4285f4, #34a853);
             color: white;
-
             border: none;
             padding: 16px;
             border-radius: 10px;
@@ -462,7 +473,6 @@
         .info-block h3 {
             color: #ffd700;
             margin-top: 0;
-
             margin-bottom: 10px;
             font-size: 16px;
         }
@@ -493,7 +503,6 @@
             font-size: 20px;
             margin-bottom: 5px;
             display: block;
-
         }
         
         .step-list {
@@ -524,10 +533,22 @@
             align-items: center;
             margin-bottom: 8px;
             padding: 8px;
-
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             font-size: 13px;
+        }
+        
+        /* НОВЫЙ СТИЛЬ ДЛЯ ЗВЕЗД ИЗ GOOGLE FORMS */
+        .google-star-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #4285f4, #34a853);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: bold;
         }
         
         /* Для очень маленьких экранов */
@@ -554,7 +575,6 @@
         /* Анимации */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
-
             to { opacity: 1; transform: translateY(0); }
         }
         
@@ -583,7 +603,6 @@
         <div class="header">
             <h1>✨ ГАЛАКТИКА ЦЕННОСТЕЙ ✨</h1>
             <p>Музей "Мой мир ценностей"<br>
-
             Наведи на звезду — узнай ценности учеников</p>
         </div>
         
@@ -608,7 +627,6 @@
                     <label for="studentName">1. Как тебя зовут?</label>
                     <input type="text" id="studentName" required placeholder="Имя и фамилия">
                 </div>
-
                 
                 <div class="form-group">
                     <label for="studentClass">2. Из какого ты класса?</label>
@@ -634,7 +652,6 @@
                         <div class="value-option" data-value="Уважение">Уважение</div>
                         <div class="value-option" data-value="Ответственность">Ответственность</div>
                         <div class="value-option" data-value="Дружба">Дружба</div>
-
                         <div class="value-option" data-value="Справедливость">Справедливость</div>
                         <div class="value-option" data-value="Спорт">Спорт</div>
                         <div class="value-option" id="otherOption">Другое</div>
@@ -656,7 +673,6 @@
     <!-- Статистика -->
     <div class="overlay" id="statsOverlay">
         <div class="modal-container">
-
             <div class="modal-header">
                 <h2>📊 СТАТИСТИКА ЦЕННОСТЕЙ</h2>
                 <button class="close-btn" onclick="closeStats()">×</button>
@@ -681,7 +697,6 @@
                     </div>
                     <div class="stat-card">
                         <h3>Мой класс</h3>
-
                         <div class="stat-value" id="myClass">-</div>
                     </div>
                     <div class="stat-card">
@@ -707,7 +722,6 @@
                         <div class="stat-value" id="totalGoogleStars">0</div>
                     </div>
                     <div class="stat-card">
-
                         <h3>Участников</h3>
                         <div class="stat-value" id="totalParticipants">0</div>
                     </div>
@@ -731,9 +745,7 @@
             </div>
             
             <!-- КНОПКА GOOGLE FORMS -->
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3D5ypAsFGGBfoWOAlC1230iqpuaXgvyICj43VbYR
-
-eOZfNuw/viewform?pli=1" 
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3D5ypAsFGGBfoWOAlC1230iqpuaXgvyICj43VbYReOZfNuw/viewform?pli=1" 
                target="_blank" 
                class="google-form-btn">
                 📋 ЗАПОЛНИТЬ GOOGLE ФОРМУ (для общей галактики)
@@ -757,7 +769,6 @@ eOZfNuw/viewform?pli=1"
                 <button class="close-btn" onclick="closeInfo()">×</button>
             </div>
             
-
             <!-- БЛОК 1: Что это? -->
             <div class="info-block">
                 <h3>✨ ЧТО ЭТО?</h3>
@@ -787,7 +798,6 @@ eOZfNuw/viewform?pli=1"
             </div>
             
             <!-- БЛОК 3: Кто сделал? -->
-
             <div class="info-block">
                 <h3>👤 КТО СДЕЛАЛ?</h3>
                 <p><strong>Матвей Левченко</strong>, 6 А класс<br>
@@ -812,7 +822,6 @@ eOZfNuw/viewform?pli=1"
                     <strong>Заполнить Google Форму</strong> — стань частью истории гимназии!
                 </div>
             </div>
-
             
             <!-- БЛОК 5: Две галактики -->
             <div class="info-block">
@@ -837,7 +846,6 @@ eOZfNuw/viewform?pli=1"
         </div>
     </div>
 
-
     <script>
         // КОНФИГУРАЦИЯ
         const CONFIG = {
@@ -858,13 +866,11 @@ eOZfNuw/viewform?pli=1"
                 'Деньги': '#ff8c00'
             }
         };
-
+        
         // ДАННЫЕ ИЗ GOOGLE FORMS (Excel таблицы)
         const GOOGLE_FORM_DATA = [
             {name: "Матвей", class: "6", value: "Свобода", reason: ""},
-            {name: "Матвей", class: "6", value: "Уважение", 
-
-reason: ""},
+            {name: "Матвей", class: "6", value: "Уважение", reason: ""},
             {name: "СВЕТА", class: "11", value: "Свобода", reason: "Свобода позволяет быть собой!"},
             {name: "Артемий", class: "10", value: "Дружба", reason: "Она создаёт фундамент на дальнейшую деятельность учащихся и определяет их личные ценности"},
             {name: "Мария", class: "10", value: "Дружба", reason: "Она делает меня счастливее"},
@@ -875,21 +881,17 @@ reason: ""},
             {name: "Мария В.", class: "7", value: "Справедливость", reason: "Так как на ней должны строиться самые важные человеческие качества"},
             {name: "Лиза Никифорова", class: "7", value: "Свобода", reason: ""},
             {name: "Вадим", class: "7", value: "Дружба", reason: "Без дружбы не будет других ценностей таких как уважение или справедливость"},
-            {name: "Ярослав", class: "7", value: "Свобода", reason: 
-
-"Свобода является основой всех других ценностей"},
+            {name: "Ярослав", class: "7", value: "Свобода", reason: "Свобода является основой всех других ценностей"},
             {name: "тимур", class: "7", value: "Дружба", reason: "друзья всегда помогут"},
             {name: "Петрова Валерия", class: "7", value: "Дружба", reason: "Важно иметь друзей и товарищей, ведь в этом лежит основа успеха."},
             {name: "Даниил Жегалин", class: "7", value: "Ответственность", reason: "Потому что ответственность - это когда кто - то обязуется выполнить часть задач, которые не может сделать другой. Без ответственности не было бы современного мира."},
             {name: "София Кайтмазова ⭐️", class: "7", value: "Уважение", reason: "Уважение рождает идею, полезный разговор или приятную встречу. Оно рождает все, что связано с общением — и это важно."},
             {name: "Андрей", class: "6", value: "Спорт", reason: "Потому что я очень часто занимаюсь спортом и я его люблю"},
             {name: "Георгий", class: "7", value: "Ответственность", reason: "Потому что это очень важный опыт с самого детства, который в Бушем поможет стать лидером"},
-            {name: "Георгий", class: "7", value: "Ответственность", reason: "Потому что это очень важный опыт с самого детства, который в будущем поможет стать лидером"},
+            {name: "Георгий", class: "7", value: "Ответственность", reason: "Потому что это очень важный опыт с самого детства, который в будущем поможет  стать лидером"},
             {name: "Света", class: "11", value: "Справедливость", reason: ""},
             {name: ".", class: "8", value: "Свобода", reason: ""},
-            {name: "Леша", class: "8", value: "Дружба", reason: 
-
-"Потому что друзья для меня очень важны"},
+            {name: "Леша", class: "8", value: "Дружба", reason: "Потому что друзья для меня очень важны"},
             {name: "Лука", class: "8", value: "Другой вариант", reason: ""},
             {name: "Варя", class: "8", value: "Уважение", reason: "если мы будем все уважать друг друга то все будет уравновешенно и спокойно"},
             {name: "Щеглов Павел", class: "8", value: "Дружба", reason: "Помогает в жизни"},
@@ -912,8 +914,6 @@ reason: ""},
         
         // Инициализация
         function init() {
-            console.log("Инициализация начата");
-
             setupCanvas();
             createStars(CONFIG.INITIAL_STARS);
             createBackgroundStars(CONFIG.BACKGROUND_STARS);
@@ -937,13 +937,11 @@ reason: ""},
                 canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
                 canvas.addEventListener('touchmove', handleTouchMove, { passive: true });
                 canvas.addEventListener('touchend', handleTouchEnd);
-
             }
             
             setupForm();
             setupStatsTabs();
             updateStats();
-            console.log("Инициализация завершена. Всего звезд: " + stars.length);
         }
         
         function setupCanvas() {
@@ -965,9 +963,7 @@ reason: ""},
             const height = canvas.height / devicePixelRatio;
             
             for (let i = 0; i < count; i++) {
-                const size = CONFIG.MIN_STAR_SIZE + Math.random() * (CONFIG.MAX_STAR_SIZE - 
-
-CONFIG.MIN_STAR_SIZE);
+                const size = CONFIG.MIN_STAR_SIZE + Math.random() * (CONFIG.MAX_STAR_SIZE - CONFIG.MIN_STAR_SIZE);
                 
                 stars.push({
                     id: i,
@@ -995,14 +991,13 @@ CONFIG.MIN_STAR_SIZE);
             return colors[Math.floor(Math.random() * colors.length)];
         }
         
-
         function loadUserStars() {
             const width = canvas.width / devicePixelRatio;
             const height = canvas.height / devicePixelRatio;
-
+            
             // Удаляем старые звёзды Матвея
             stars = stars.filter(star => !star.isMatvey);
-
+            
             // СОЗДАЁМ ЗВЕЗДУ МАТВЕЯ В ЦЕНТРЕ
             stars.push({
                 id: 999,
@@ -1025,19 +1020,18 @@ CONFIG.MIN_STAR_SIZE);
                 isHovered: false,
                 isUserStar: true,
                 isMatvey: true,
-
                 isGoogleStar: false,
                 rotation: 0,
                 rotationSpeed: 0.001 + Math.random() * 0.002
             });
-
+            
             // Добавляем звёзды пользователей
             userStars.forEach((starData, index) => {
                 if (starData.name !== "Матвей Левченко") {
                     addStarToGalaxy(starData, 1000 + index, false);
                 }
             });
-
+            
             // Сохраняем звезду Матвея в localStorage
             const hasMatveyStar = userStars.some(star => star.name === "Матвей Левченко");
             if (!hasMatveyStar) {
@@ -1053,15 +1047,13 @@ CONFIG.MIN_STAR_SIZE);
             }
         }
         
-
         function loadGoogleFormStars() {
-            console.log("Загрузка звезд из Google Forms...");
             const width = canvas.width / devicePixelRatio;
             const height = canvas.height / devicePixelRatio;
-
+            
             // Очищаем старые звёзды из Google Forms
             stars = stars.filter(star => !star.isGoogleStar);
-
+            
             // Добавляем звёзды из Google Forms
             GOOGLE_FORM_DATA.forEach((starData, index) => {
                 const googleStar = {
@@ -1075,23 +1067,21 @@ CONFIG.MIN_STAR_SIZE);
                 googleFormStars.push(googleStar);
                 addStarToGalaxy(googleStar, 5000 + index, true);
             });
-            
-            console.log("Загружено звезд из Google Forms: " + googleFormStars.length);
         }
         
         function addStarToGalaxy(starData, id, isGoogleStar) {
             const width = canvas.width / devicePixelRatio;
             const height = canvas.height / devicePixelRatio;
-
-
+            
             // Для Google Forms звёзд делаем их меньше и распределяем дальше
             const size = isGoogleStar ? (3 + Math.random() * 2) : (4 + Math.random() * 3);
-
+            
             // Распределяем в разных областях в зависимости от типа
             const centerX = width / 2;
             const centerY = height / 2;
+            
             let radius, angle;
-
+            
             if (isGoogleStar) {
                 // Google Forms звёзды - дальше от центра, в разных квадрантах
                 radius = 200 + Math.random() * 300;
@@ -1101,17 +1091,16 @@ CONFIG.MIN_STAR_SIZE);
                 radius = 100 + Math.random() * 200;
                 angle = Math.random() * Math.PI * 2;
             }
-
+            
             const x = centerX + Math.cos(angle) * radius;
             const y = centerY + Math.sin(angle) * radius;
-
+            
             // Нормализуем значение для цвета
             let valueForColor = starData.value;
             if (valueForColor === "Другой вариант" || valueForColor === "Деньги") {
-
                 valueForColor = "Другой";
             }
-
+            
             stars.push({
                 id: id,
                 x: x,
@@ -1138,7 +1127,6 @@ CONFIG.MIN_STAR_SIZE);
                 rotationSpeed: 0.0005 + Math.random() * 0.001
             });
         }
-
         
         function createBackgroundStars(count) {
             for (let i = 0; i < count; i++) {
@@ -1152,19 +1140,13 @@ CONFIG.MIN_STAR_SIZE);
             }
         }
         
-        // ИСПРАВЛЕННАЯ ФУНКЦИЯ ОБРАБОТКИ ДВИЖЕНИЯ МЫШИ
         function handleMouseMove(event) {
             const rect = canvas.getBoundingClientRect();
-            const scaleX = canvas.width / devicePixelRatio / rect.width;
-            const scaleY = canvas.height / devicePixelRatio / rect.height;
+            const x = (event.clientX - rect.left) * (canvas.width / devicePixelRatio / rect.width);
+            const y = (event.clientY - rect.top) * (canvas.height / devicePixelRatio / rect.height);
             
-            const x = (event.clientX - rect.left) * scaleX;
-            const y = (event.clientY - rect.top) * scaleY;
-            
-            // Сбрасываем предыдущую подсвеченную звезду
             if (hoveredStar) {
                 hoveredStar.isHovered = false;
-
                 hoveredStar.glow = getDefaultGlow(hoveredStar);
                 hoveredStar = null;
             }
@@ -1178,7 +1160,7 @@ CONFIG.MIN_STAR_SIZE);
                 const dx = x - star.x;
                 const dy = y - star.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                const hoverRadius = star.baseSize * 15; // Увеличил радиус ховера
+                const hoverRadius = star.currentSize * 15;
                 
                 if (distance < hoverRadius && distance < minDistance) {
                     minDistance = distance;
@@ -1190,9 +1172,9 @@ CONFIG.MIN_STAR_SIZE);
                 closestStar.isHovered = true;
                 closestStar.glow = getHoveredGlow(closestStar);
                 hoveredStar = closestStar;
+                
                 showTooltip(closestStar, event.clientX, event.clientY);
             }
-
         }
         
         function getDefaultGlow(star) {
@@ -1213,34 +1195,31 @@ CONFIG.MIN_STAR_SIZE);
             if (event.touches.length === 1) {
                 const touch = event.touches[0];
                 const rect = canvas.getBoundingClientRect();
-                const scaleX = canvas.width / devicePixelRatio / rect.width;
-                const scaleY = canvas.height / devicePixelRatio / rect.height;
+                const x = (touch.clientX - rect.left) * (canvas.width / devicePixelRatio / rect.width);
+                const y = (touch.clientY - rect.top) * (canvas.height / devicePixelRatio / rect.height);
                 
-                const x = (touch.clientX - rect.left) * scaleX;
-                const y = (touch.clientY - rect.top) * scaleY;
-
                 let closestStar = null;
                 let minDistance = Infinity;
-
-
+                
                 for (let star of stars) {
                     const dx = x - star.x;
                     const dy = y - star.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    const hoverRadius = star.baseSize * 20;
-
+                    const hoverRadius = star.currentSize * 20;
+                    
                     if (distance < hoverRadius && distance < minDistance) {
                         minDistance = distance;
                         closestStar = star;
                     }
                 }
-
+                
                 if (closestStar) {
                     closestStar.isHovered = true;
                     closestStar.glow = getHoveredGlow(closestStar);
                     hoveredStar = closestStar;
+                    
                     showTooltip(closestStar, touch.clientX, touch.clientY);
-
+                    
                     // На мобильных показываем подсказку на 2 секунды
                     if (touchTimer) clearTimeout(touchTimer);
                     touchTimer = setTimeout(() => {
@@ -1248,7 +1227,6 @@ CONFIG.MIN_STAR_SIZE);
                         if (hoveredStar) {
                             hoveredStar.isHovered = false;
                             hoveredStar.glow = getDefaultGlow(hoveredStar);
-
                             hoveredStar = null;
                         }
                     }, 2000);
@@ -1259,35 +1237,7 @@ CONFIG.MIN_STAR_SIZE);
         function handleTouchMove(event) {
             if (event.touches.length === 1) {
                 const touch = event.touches[0];
-                const rect = canvas.getBoundingClientRect();
-                const scaleX = canvas.width / devicePixelRatio / rect.width;
-                const scaleY = canvas.height / devicePixelRatio / rect.height;
-                
-                const x = (touch.clientX - rect.left) * scaleX;
-                const y = (touch.clientY - rect.top) * scaleY;
-
-                let closestStar = null;
-                let minDistance = Infinity;
-
-                for (let star of stars) {
-                    const dx = x - star.x;
-                    const dy = y - star.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    const hoverRadius = star.baseSize * 20;
-
-                    if (distance < hoverRadius && distance < minDistance) {
-
-                        minDistance = distance;
-                        closestStar = star;
-                    }
-                }
-
-                if (closestStar) {
-                    closestStar.isHovered = true;
-                    closestStar.glow = getHoveredGlow(closestStar);
-                    hoveredStar = closestStar;
-                    showTooltip(closestStar, touch.clientX, touch.clientY);
-                }
+                handleTouchStart(event);
             }
         }
         
@@ -1306,18 +1256,17 @@ CONFIG.MIN_STAR_SIZE);
         
         function handleStarClick() {
             if (hoveredStar) {
-
                 hoveredStar.glow = hoveredStar.isMatvey ? 4.0 : 3.0;
                 setTimeout(() => hoveredStar.glow = getDefaultGlow(hoveredStar), 300);
+                
                 // Показываем подсказку ещё раз при клике
                 showTooltip(hoveredStar, hoveredStar.x, hoveredStar.y);
             }
         }
         
-        // ИСПРАВЛЕННАЯ ФУНКЦИЯ ПОКАЗА ПОДСКАЗКИ
+        // ⭐⭐⭐ ИСПРАВЛЕННАЯ ФУНКЦИЯ ПОКАЗА ПОДСКАЗКИ ⭐⭐⭐
         function showTooltip(star, clientX, clientY) {
             let sourceBadge = '';
-            
             if (star.isGoogleStar) {
                 sourceBadge = '<div style="color: #34a853; font-size: 11px; margin-bottom: 5px; font-weight: bold;">🌐 Google Форма</div>';
             } else if (star.isUserStar) {
@@ -1329,42 +1278,48 @@ CONFIG.MIN_STAR_SIZE);
                 <div class="star-name">⭐ ${star.name}</div>
                 <div class="star-info"><strong>Класс:</strong> ${star.class}</div>
                 <div class="star-info"><strong>Ценность:</strong> ${star.value}</div>
-
                 <div class="star-info"><strong>Почему:</strong> ${star.reason}</div>
             ` : `
                 <div class="star-name">✨ Звезда галактики</div>
                 <div class="star-info">Нажми "Добавить свою звезду"!</div>
             `;
             
-            // Показываем tooltip
+            // Показываем подсказку
             tooltip.style.opacity = '1';
             
-            // Рассчитываем позицию tooltip
-            const tooltipWidth = tooltip.offsetWidth || 300;
-            const tooltipHeight = tooltip.offsetHeight || 150;
+            // Рассчитываем позицию с учетом границ экрана
+            const tooltipWidth = tooltip.offsetWidth;
+            const tooltipHeight = tooltip.offsetHeight;
             
-            let x = clientX + 20;
-            let y = clientY + 20;
+            // Позиция по умолчанию (справа снизу от курсора)
+            let x = clientX + 15;
+            let y = clientY + 15;
             
-            // Проверяем границы экрана
+            // Проверяем, помещается ли подсказка справа
             if (x + tooltipWidth > window.innerWidth) {
-                x = clientX - tooltipWidth - 20;
+                // Не помещается справа - размещаем слева
+                x = clientX - tooltipWidth - 15;
+                if (x < 5) x = 5; // Минимальный отступ от края
             }
             
+            // Проверяем, помещается ли подсказка снизу
             if (y + tooltipHeight > window.innerHeight) {
-                y = clientY - tooltipHeight - 20;
+                // Не помещается снизу - размещаем сверху
+                y = clientY - tooltipHeight - 15;
+                if (y < 5) y = 5; // Минимальный отступ от края
             }
             
-            // Устанавливаем минимальные значения
-            x = Math.max(10, Math.min(x, window.innerWidth - tooltipWidth - 10));
-
-            y = Math.max(10, Math.min(y, window.innerHeight - tooltipHeight - 10));
+            // Проверяем, чтобы подсказка не выходила за верхний край
+            if (y < 5) {
+                y = 5;
+            }
             
+            // Устанавливаем позицию
             tooltip.style.left = x + 'px';
             tooltip.style.top = y + 'px';
         }
         
-        // ФУНКЦИЯ РИСОВАНИЯ ПЯТИКОНЕЧНОЙ ЗВЕЗДЫ
+        // ⭐⭐⭐ ФУНКЦИЯ РИСОВАНИЯ ПЯТИКОНЕЧНОЙ ЗВЕЗДЫ ⭐⭐⭐
         function drawStar(star, time) {
             // Пульсация размера
             star.pulse += star.pulseSpeed;
@@ -1385,7 +1340,6 @@ CONFIG.MIN_STAR_SIZE);
                 );
                 
                 gradient.addColorStop(0, star.color + 'cc');
-
                 gradient.addColorStop(0.4, star.color + '88');
                 gradient.addColorStop(0.7, star.color + '44');
                 gradient.addColorStop(1, star.color + '00');
@@ -1415,7 +1369,6 @@ CONFIG.MIN_STAR_SIZE);
             ctx.beginPath();
             
             // Рисуем пятиконечную звезду
-
             for (let i = 0; i < 10; i++) {
                 const angle = star.rotation + (i * Math.PI) / 5;
                 const radius = i % 2 === 0 ? outerRadius : innerRadius;
@@ -1444,7 +1397,6 @@ CONFIG.MIN_STAR_SIZE);
             ctx.fillStyle = star.color;
             ctx.beginPath();
             ctx.arc(0, 0, size * 0.15, 0, Math.PI * 2);
-
             ctx.fill();
             
             ctx.restore();
@@ -1472,7 +1424,6 @@ CONFIG.MIN_STAR_SIZE);
         function animate() {
             const width = canvas.width / devicePixelRatio;
             const height = canvas.height / devicePixelRatio;
-
             const centerX = width / 2;
             const centerY = height / 2;
             const time = Date.now() * 0.001;
@@ -1500,7 +1451,6 @@ CONFIG.MIN_STAR_SIZE);
                 }
                 // Остальные звёзды - вращение вокруг центра с разной скоростью
                 else {
-
                     const dx = star.originalX - centerX;
                     const dy = star.originalY - centerY;
                     const distance = Math.sqrt(dx*dx + dy*dy);
@@ -1529,7 +1479,6 @@ CONFIG.MIN_STAR_SIZE);
         function setupForm() {
             const form = document.getElementById('starForm');
             const valueOptions = document.querySelectorAll('.value-option');
-
             const customValueInput = document.getElementById('customValue');
             const selectedValueInput = document.getElementById('selectedValue');
             const otherOption = document.getElementById('otherOption');
@@ -1554,7 +1503,6 @@ CONFIG.MIN_STAR_SIZE);
                 selectedValueInput.value = this.value;
                 if (this.value.trim()) {
                     valueOptions.forEach(opt => opt.classList.remove('selected'));
-
                     otherOption.classList.add('selected');
                     customValueInput.style.display = 'block';
                 }
@@ -1582,7 +1530,6 @@ CONFIG.MIN_STAR_SIZE);
                 };
                 
                 userStars.push(starData);
-
                 localStorage.setItem('gymnasiumValues', JSON.stringify(userStars));
                 
                 addStarToGalaxy(starData, 2000 + userStars.length, false);
@@ -1606,7 +1553,6 @@ CONFIG.MIN_STAR_SIZE);
             
             personalStatsBtn.addEventListener('click', function() {
                 personalStats.style.display = 'block';
-
                 googleStats.style.display = 'none';
                 personalStatsBtn.style.background = 'linear-gradient(145deg, rgba(80, 80, 120, 0.95), rgba(50, 50, 80, 0.98))';
                 googleStatsBtn.style.background = 'linear-gradient(145deg, rgba(65, 105, 180, 0.7), rgba(45, 85, 160, 0.8))';
@@ -1629,7 +1575,6 @@ CONFIG.MIN_STAR_SIZE);
                 left: 50%;
                 transform: translate(-50%, -50%);
                 background: linear-gradient(45deg, #32cd32, #00ced1);
-
                 color: black;
                 padding: 15px 25px;
                 border-radius: 12px;
@@ -1658,7 +1603,6 @@ CONFIG.MIN_STAR_SIZE);
             }, 2000);
         }
         
-
         // Модальные окна
         window.openForm = function() {
             document.getElementById('formOverlay').style.display = 'flex';
@@ -1684,34 +1628,30 @@ CONFIG.MIN_STAR_SIZE);
         };
         
         window.closeInfo = function() {
-
             document.getElementById('infoOverlay').style.display = 'none';
         };
         
-        // ИСПРАВЛЕННАЯ СТАТИСТИКА
+        // ⭐⭐⭐ ИСПРАВЛЕННАЯ СТАТИСТИКА ⭐⭐⭐
         function updateStats() {
-            // Фильтруем звёзды пользователя (без Матвея и Google Forms)
-            const userStarsFiltered = userStars.filter(star => 
-                !star.isMatvey && !star.isGoogleStar
-            );
+            // Фильтруем звёзды, исключая Матвея
+            const myStars = userStars.filter(star => !star.isMatvey);
             
-            // Общее количество личных звезд
-            document.getElementById('totalStars').textContent = userStarsFiltered.length;
+            // Общее количество моих звёзд
+            document.getElementById('totalStars').textContent = myStars.length;
             
-            if (userStarsFiltered.length > 0) {
+            if (myStars.length > 0) {
                 // Мой класс (из последней добавленной звезды)
-                const lastStar = userStarsFiltered[userStarsFiltered.length - 1];
+                const lastStar = myStars[myStars.length - 1];
                 document.getElementById('myClass').textContent = lastStar.class + ' класс';
                 
-                // Подсчет ценностей
+                // Подсчитываем частоту ценностей
                 const valueCount = {};
-                userStarsFiltered.forEach(star => {
+                myStars.forEach(star => {
                     const value = star.value || 'Не указано';
                     valueCount[value] = (valueCount[value] || 0) + 1;
                 });
-
                 
-                // Находим главную ценность
+                // Находим самую частую ценность (главную)
                 let mainValue = '-';
                 let maxCount = 0;
                 for (const [value, count] of Object.entries(valueCount)) {
@@ -1720,9 +1660,9 @@ CONFIG.MIN_STAR_SIZE);
                         mainValue = value;
                     }
                 }
-                document.getElementById('myMainValue').textContent = mainValue;
+                document.getElementById('myMainValue').textContent = mainValue.length > 10 ? mainValue.substring(0, 10) + '...' : mainValue;
                 
-                // Находим популярную ценность
+                // Находим самую популярную ценность среди всех
                 let popularValue = '-';
                 let popularCount = 0;
                 for (const [value, count] of Object.entries(valueCount)) {
@@ -1731,22 +1671,22 @@ CONFIG.MIN_STAR_SIZE);
                         popularValue = value;
                     }
                 }
-                document.getElementById('popularValue').textContent = popularValue;
+                document.getElementById('popularValue').textContent = popularValue.length > 10 ? popularValue.substring(0, 10) + '...' : popularValue;
                 
                 // Распределение ценностей
-
                 let distributionHTML = '';
                 const sortedValues = Object.entries(valueCount)
-                    .sort((a, b) => b[1] - a[1]);
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 10); // Показываем топ-10
                 
                 if (sortedValues.length > 0) {
                     sortedValues.forEach(([value, count]) => {
-                        const percentage = Math.round((count / userStarsFiltered.length) * 100);
+                        const percentage = Math.round((count / myStars.length) * 100);
                         const color = CONFIG.VALUE_COLORS[value] || CONFIG.VALUE_COLORS['Другой'];
-                        
+                        const displayValue = value.length > 15 ? value.substring(0, 15) + '...' : value;
                         distributionHTML += `
                             <div class="distribution-item">
-                                <span style="min-width: 100px; color: ${color}; font-weight: bold;">${value}</span>
+                                <span style="min-width: 100px; color: ${color}; font-weight: bold;">${displayValue}</span>
                                 <div style="flex: 1; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 0 10px; overflow: hidden;">
                                     <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-radius: 10px;"></div>
                                 </div>
@@ -1757,7 +1697,6 @@ CONFIG.MIN_STAR_SIZE);
                         `;
                     });
                 } else {
-
                     distributionHTML = '<div style="color: #aaddff; text-align: center; padding: 20px;">Нет данных</div>';
                 }
                 
@@ -1771,12 +1710,11 @@ CONFIG.MIN_STAR_SIZE);
             }
         }
         
-        // СТАТИСТИКА GOOGLE FORMS
+        // ⭐⭐⭐ СТАТИСТИКА GOOGLE FORMS ⭐⭐⭐
         function updateGoogleStats() {
             // Общее количество звёзд из Google Forms
             document.getElementById('totalGoogleStars').textContent = googleFormStars.length;
             
-
             // Количество уникальных участников
             const uniqueParticipants = new Set(googleFormStars.map(star => star.name));
             document.getElementById('totalParticipants').textContent = uniqueParticipants.size;
@@ -1800,7 +1738,6 @@ CONFIG.MIN_STAR_SIZE);
                 }
                 document.getElementById('popularClass').textContent = popularClass;
                 
-
                 // Распределение по классам для графика
                 let classDistributionHTML = '';
                 const sortedClasses = Object.entries(classCount)
@@ -1811,7 +1748,6 @@ CONFIG.MIN_STAR_SIZE);
                     sortedClasses.forEach(([className, count]) => {
                         const percentage = Math.round((count / googleFormStars.length) * 100);
                         const color = getClassColor(className);
-                        
                         classDistributionHTML += `
                             <div class="distribution-item">
                                 <span style="min-width: 80px; color: ${color}; font-weight: bold;">${className}</span>
@@ -1824,7 +1760,6 @@ CONFIG.MIN_STAR_SIZE);
                             </div>
                         `;
                     });
-
                 } else {
                     classDistributionHTML = '<div style="color: #aaddff; text-align: center; padding: 20px;">Нет данных по классам</div>';
                 }
@@ -1850,9 +1785,8 @@ CONFIG.MIN_STAR_SIZE);
                         maxValueCount = count;
                         topValue = value;
                     }
-
                 }
-                document.getElementById('topGoogleValue').textContent = topValue;
+                document.getElementById('topGoogleValue').textContent = topValue.length > 10 ? topValue.substring(0, 10) + '...' : topValue;
                 
                 // Распределение ценностей для графика
                 let googleValuesHTML = '';
@@ -1864,14 +1798,13 @@ CONFIG.MIN_STAR_SIZE);
                     sortedGoogleValues.forEach(([value, count]) => {
                         const percentage = Math.round((count / googleFormStars.length) * 100);
                         const color = CONFIG.VALUE_COLORS[value] || CONFIG.VALUE_COLORS['Другой'];
-                        
+                        const displayValue = value.length > 15 ? value.substring(0, 15) + '...' : value;
                         googleValuesHTML += `
                             <div class="distribution-item">
-                                <span style="min-width: 100px; color: ${color}; font-weight: bold;">${value}</span>
+                                <span style="min-width: 100px; color: ${color}; font-weight: bold;">${displayValue}</span>
                                 <div style="flex: 1; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 0 10px; overflow: hidden;">
                                     <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-radius: 10px;"></div>
                                 </div>
-
                                 <span style="min-width: 70px; text-align: right; color: #aaddff; font-weight: bold;">
                                     ${count} (${percentage}%)
                                 </span>
@@ -1890,7 +1823,6 @@ CONFIG.MIN_STAR_SIZE);
                     '<div style="color: #aaddff; text-align: center; padding: 20px;">Нет данных из Google Forms</div>';
                 document.getElementById('googleValuesDistribution').innerHTML = 
                     '<div style="color: #aaddff; text-align: center; padding: 20px;">Нет данных из Google Forms</div>';
-
             }
         }
         
