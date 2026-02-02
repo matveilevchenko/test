@@ -6,12 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Интерактивная галактика ценностей учеников гимназии">
     
-    <!-- ВАЖНО: CSP meta-тег для GitHub Pages -->
-    <meta http-equiv="Content-Security-Policy" 
-          content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https:;
-                   script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;
-                   style-src 'self' 'unsafe-inline' https:;
-                   img-src 'self' data: https:;">
+    <!-- УДАЛИТЕ ВСЕ CSP meta-теги! GitHub Pages сам добавляет свой -->
+    <!-- НИКАКИХ meta http-equiv="Content-Security-Policy" -->
     
     <style>
         * { 
@@ -584,7 +580,7 @@
         <div class="tooltip" id="tooltip"></div>
     </div>
 
-    <!-- Форма добавления звезды с ИСПРАВЛЕННЫМИ атрибутами name -->
+    <!-- Форма добавления звезды с ВСЕМИ атрибутами name -->
     <div class="overlay" id="formOverlay">
         <div class="modal-container">
             <div class="modal-header">
@@ -616,7 +612,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>3. Какая ценность для тебя важна?</label>
+                    <label for="selectedValue">3. Какая ценность для тебя важна?</label>
                     <div class="value-options" id="valueOptions">
                         <div class="value-option" data-value="Уважение">Уважение</div>
                         <div class="value-option" data-value="Ответственность">Ответственность</div>
@@ -626,6 +622,7 @@
                         <div class="value-option" id="otherOption">Другое</div>
                     </div>
                     <input type="text" id="customValue" name="customValue" placeholder="Твоя ценность" style="display: none; margin-top: 10px;">
+                    <!-- ИСПРАВЛЕНО: добавлен атрибут name -->
                     <input type="hidden" id="selectedValue" name="selectedValue" required>
                 </div>
                 
@@ -816,13 +813,15 @@
     </div>
 
     <script>
+        // УДАЛИТЕ ВСЁ ПРО GALAXY_LOADED И eval()
+        // ПРОСТОЙ И БЕЗОПАСНЫЙ КОД
+        
         // КОНФИГУРАЦИЯ
         const CONFIG = {
             INITIAL_STARS: 30,
             MAX_STAR_SIZE: 6,
             MIN_STAR_SIZE: 2,
             BACKGROUND_STARS: 150,
-            GOOGLE_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSd3D5ypAsFGGBfoWOAlC1230iqpuaXgvyICj43VbYReOZfNuw/viewform?pli=1",
             VALUE_COLORS: {
                 'Уважение': '#ff6666',
                 'Ответственность': '#6699ff',
@@ -886,13 +885,12 @@
             try {
                 const stored = localStorage.getItem('gymnasiumValues');
                 if (stored) {
-                    // БЕЗОПАСНЫЙ ПАРСИНГ БЕЗ eval()
-                    userStars = JSON.parse(stored);
+                    userStars = JSON.parse(stored); // БЕЗ eval()
                 } else {
                     userStars = [];
                 }
             } catch (e) {
-                console.error('Ошибка загрузки данных:', e);
+                console.log('Ошибка загрузки данных, создаем новый массив');
                 userStars = [];
             }
         }
@@ -1037,7 +1035,7 @@
                 try {
                     localStorage.setItem('gymnasiumValues', JSON.stringify(userStars));
                 } catch (e) {
-                    console.error('Ошибка сохранения:', e);
+                    console.log('Ошибка сохранения:', e);
                 }
             }
         }
@@ -1561,7 +1559,7 @@
                 try {
                     localStorage.setItem('gymnasiumValues', JSON.stringify(userStars));
                 } catch (e) {
-                    console.error('Ошибка сохранения:', e);
+                    console.log('Ошибка сохранения:', e);
                 }
                 
                 addStarToGalaxy(starData, 2000 + userStars.length, false);
@@ -1618,24 +1616,19 @@
                 z-index: 10001;
                 box-shadow: 0 10px 30px rgba(50, 205, 50, 0.5);
                 text-align: center;
-                animation: fadeInOut 2s ease-in-out;
             `;
             
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes fadeInOut {
-                    0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-                    20%, 80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-                }
-            `;
-            
-            document.head.appendChild(style);
             notification.textContent = message;
             document.body.appendChild(notification);
             
             setTimeout(() => {
-                notification.remove();
-                style.remove();
+                notification.style.transition = 'opacity 0.5s';
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 500);
             }, 2000);
         }
         
