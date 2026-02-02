@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -24,6 +25,7 @@
         
         canvas { 
             position: fixed; 
+
             top: 0; 
             left: 0; 
             width: 100vw; 
@@ -54,6 +56,7 @@
             color: #ffdd00;
             font-size: 18px;
             text-align: center;
+
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 40, 0.98));
             padding: 25px;
             border-radius: 20px;
@@ -79,6 +82,7 @@
             height: 40px;
             margin: 20px auto;
             border: 4px solid rgba(255, 221, 0, 0.3);
+
             border-top-color: #ffdd00;
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -107,6 +111,7 @@
         }
         
         .header h1 {
+
             background: linear-gradient(45deg, #ffdd00, #ff8c00);
             -webkit-background-clip: text;
             background-clip: text;
@@ -137,6 +142,7 @@
             padding: 15px;
             border-radius: 15px;
             border: 2px solid rgba(255, 255, 255, 0.15);
+
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
             z-index: 200;
             width: 94%;
@@ -165,7 +171,9 @@
         }
         
         .control-btn:hover, .control-btn:active {
-            background: linear-gradient(145deg, rgba(100, 100, 150, 0.95), rgba(70, 70, 110, 0.98));
+            background: linear-gradient(145deg, rgba(100, 100, 
+
+150, 0.95), rgba(70, 70, 110, 0.98));
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
             border-bottom-color: rgba(255, 215, 0, 0.9);
         }
@@ -188,8 +196,10 @@
             background: linear-gradient(145deg, rgba(70, 200, 70, 0.95), rgba(50, 180, 50, 0.98));
         }
         
+        /* ИСПРАВЛЕННЫЙ СТИЛЬ TOOLTIP */
         .tooltip {
-            position: absolute;
+            position: fixed; /* Изменено с absolute на fixed */
+
             background: rgba(0, 0, 0, 0.97);
             color: white;
             padding: 15px;
@@ -201,9 +211,35 @@
             border: 2px solid #ffdd00;
             box-shadow: 0 0 40px rgba(255, 221, 0, 0.4);
             max-width: 320px;
-            z-index: 1000;
+            min-width: 280px;
+            z-index: 10000; /* Увеличено для надежности */
             line-height: 1.4;
             backdrop-filter: blur(10px);
+            /* Гарантируем, что подсказка не выйдет за экран */
+            max-width: 90vw; /* Максимум 90% ширины экрана */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Для очень маленьких экранов */
+        @media (max-width: 480px) {
+            .tooltip {
+                max-width: 95vw;
+                padding: 12px;
+                font-size: 13px;
+                min-width: 250px;
+
+            }
+        }
+        
+        /* Для совсем крошечных экранов */
+        @media (max-width: 350px) {
+            .tooltip {
+                max-width: 98vw;
+                min-width: 220px;
+                padding: 10px;
+                font-size: 12px;
+            }
         }
         
         .star-name {
@@ -211,6 +247,7 @@
             font-weight: bold;
             margin-bottom: 8px;
             font-size: 16px;
+            word-break: break-word;
         }
         
         .star-info {
@@ -218,9 +255,11 @@
             font-size: 13px;
             margin-bottom: 6px;
             line-height: 1.3;
+            word-break: break-word;
         }
         
         .overlay {
+
             position: fixed;
             top: 0;
             left: 0;
@@ -249,6 +288,7 @@
         }
         
         .modal-header {
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -278,6 +318,7 @@
             flex-shrink: 0;
             border-bottom: 3px solid rgba(255, 0, 0, 0.6);
         }
+
         
         .close-btn:hover, .close-btn:active {
             background: linear-gradient(145deg, rgba(255, 100, 100, 0.95), rgba(240, 80, 80, 0.98));
@@ -307,6 +348,7 @@
             border-radius: 10px;
             color: white;
             font-size: 15px;
+
             transition: all 0.3s;
             font-family: inherit;
         }
@@ -334,6 +376,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
+
             margin-top: 10px;
         }
         
@@ -361,6 +404,7 @@
             color: #ffdd00;
         }
         
+
         .submit-btn {
             width: 100%;
             background: linear-gradient(45deg, #32cd32, #00ced1);
@@ -389,7 +433,9 @@
         }
         
         .stat-card {
-            background: linear-gradient(135deg, rgba(30, 30, 50, 0.9), rgba(20, 20, 40, 0.95));
+            background: linear-gradient(135deg, rgba(30, 30, 50, 
+
+0.9), rgba(20, 20, 40, 0.95));
             padding: 15px;
             border-radius: 12px;
             border: 2px solid rgba(255, 215, 0, 0.3);
@@ -418,6 +464,7 @@
             border: none;
             padding: 16px;
             border-radius: 10px;
+
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
@@ -448,6 +495,7 @@
             margin-bottom: 10px;
             font-size: 16px;
         }
+
         
         .info-block p {
             color: #aaddff;
@@ -478,6 +526,7 @@
         }
         
         .step-list {
+
             margin: 15px 0;
         }
         
@@ -508,6 +557,7 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             font-size: 13px;
+
         }
         
         /* Для очень маленьких экранов */
@@ -537,6 +587,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+
         .modal-container {
             animation: fadeIn 0.3s ease-out;
         }
@@ -545,26 +596,6 @@
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
         ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, #ffd700, #ff8c00); border-radius: 3px; }
-        /* Экстренное исправление для телефонов */
-@media (max-width: 768px) {
-    .modal-container {
-        width: 90% !important;
-        height: 80vh !important;
-        overflow-y: auto !important;
-        padding: 15px !important;
-    }
-    
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-        font-size: 16px !important;
-    }
-    
-    .close-btn {
-        width: 40px !important;
-        height: 40px !important;
-    }
-} 
     </style>
 </head>
 <body>
@@ -585,6 +616,7 @@
             Наведи на звезду — узнай ценности учеников</p>
         </div>
         
+
         <div class="controls">
             <button class="control-btn" onclick="openForm()">⭐ ДОБАВИТЬ ЗВЕЗДУ</button>
             <button class="control-btn stats-btn" onclick="openStats()">📊 СТАТИСТИКА</button>
@@ -608,7 +640,9 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="studentClass">2. Из какого ты класса?</label>
+                    <label for="studentClass">2. Из какого ты 
+
+класса?</label>
                     <select id="studentClass" required>
                         <option value="">Выбери класс</option>
                         <option value="1">1 класс</option>
@@ -632,7 +666,9 @@
                         <div class="value-option" data-value="Ответственность">Ответственность</div>
                         <div class="value-option" data-value="Дружба">Дружба</div>
                         <div class="value-option" data-value="Справедливость">Справедливость</div>
-                        <div class="value-option" data-value="Спорт">Спорт</div>
+                        <div class="value-option" data-
+
+value="Спорт">Спорт</div>
                         <div class="value-option" id="otherOption">Другое</div>
                     </div>
                     <input type="text" id="customValue" placeholder="Твоя ценность" style="display: none; margin-top: 10px;">
@@ -654,7 +690,9 @@
         <div class="modal-container">
             <div class="modal-header">
                 <h2>📊 СТАТИСТИКА ЦЕННОСТЕЙ</h2>
-                <button class="close-btn" onclick="closeStats()">×</button>
+                <button class="close-btn" onclick="closeStats()">×</
+
+button>
             </div>
             <div class="stats-grid">
                 <div class="stat-card">
@@ -681,6 +719,7 @@
             
             <!-- КНОПКА GOOGLE FORMS -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3D5ypAsFGGBfoWOAlC1230iqpuaXgvyICj43VbYReOZfNuw/viewform?pli=1" 
+
                target="_blank" 
                class="google-form-btn">
                 📋 ЗАПОЛНИТЬ GOOGLE ФОРМУ (для общей галактики)
@@ -705,6 +744,7 @@
             </div>
             
             <!-- БЛОК 1: Что это? -->
+
             <div class="info-block">
                 <h3>✨ ЧТО ЭТО?</h3>
                 <p><strong>Галактика ценностей гимназиста!</strong><br>
@@ -734,6 +774,7 @@
             
             <!-- БЛОК 3: Кто сделал? -->
             <div class="info-block">
+
                 <h3>👤 КТО СДЕЛАЛ?</h3>
                 <p><strong>Матвей Левченко</strong>, 6 А класс<br>
                 <small>Куратор Зыков Михаил Анатольевич</small></p>
@@ -758,6 +799,7 @@
                 </div>
             </div>
             
+
             <!-- БЛОК 5: Две галактики -->
             <div class="info-block">
                 <h3>🌟 ДВЕ ГАЛАКТИКИ</h3>
@@ -807,9 +849,11 @@
         // Переменные
         let stars = [];
         let userStars = JSON.parse(localStorage.getItem('gymnasiumValues')) || [];
+
         let particles = [];
         let hoveredStar = null;
         let devicePixelRatio = window.devicePixelRatio || 1;
+        let touchTimer = null;
         
         // Инициализация
         function init() {
@@ -832,8 +876,10 @@
             
             // Для телефонов
             if ('ontouchstart' in window) {
-                canvas.addEventListener('touchstart', handleTouch, { passive: true });
-                canvas.addEventListener('touchmove', handleTouch, { passive: true });
+
+                canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
+                canvas.addEventListener('touchmove', handleTouchMove, { passive: true });
+                canvas.addEventListener('touchend', handleTouchEnd);
             }
             
             setupForm();
@@ -858,6 +904,7 @@
             const width = canvas.width / devicePixelRatio;
             const height = canvas.height / devicePixelRatio;
             
+
             for (let i = 0; i < count; i++) {
                 const size = CONFIG.MIN_STAR_SIZE + Math.random() * (CONFIG.MAX_STAR_SIZE - CONFIG.MIN_STAR_SIZE);
                 
@@ -884,6 +931,7 @@
             const colors = Object.values(CONFIG.VALUE_COLORS);
             return colors[Math.floor(Math.random() * colors.length)];
         }
+
         
         function loadUserStars() {
             const width = canvas.width / devicePixelRatio;
@@ -913,6 +961,7 @@
                 glow: 2.0,
                 isHovered: false,
                 isUserStar: true,
+
                 isMatvey: true,
                 rotation: 0,
                 rotationSpeed: 0.001 + Math.random() * 0.002
@@ -940,6 +989,7 @@
             }
         }
         
+
         function addStarToGalaxy(starData, id) {
             const width = canvas.width / devicePixelRatio;
             const height = canvas.height / devicePixelRatio;
@@ -969,6 +1019,7 @@
                 reason: starData.reason,
                 speed: 0.02 + Math.random() * 0.05,
                 angle: Math.random() * Math.PI * 2,
+
                 pulse: Math.random() * Math.PI * 2,
                 pulseSpeed: 0.005 + Math.random() * 0.01,
                 glow: 1.0,
@@ -995,7 +1046,9 @@
         function handleMouseMove(event) {
             const rect = canvas.getBoundingClientRect();
             const x = (event.clientX - rect.left) * (canvas.width / devicePixelRatio / rect.width);
-            const y = (event.clientY - rect.top) * (canvas.height / devicePixelRatio / rect.height);
+            const y = (event.clientY - rect.top) * (canvas.height / 
+
+devicePixelRatio / rect.height);
             
             if (hoveredStar) {
                 hoveredStar.isHovered = false;
@@ -1023,13 +1076,14 @@
             if (closestStar) {
                 closestStar.isHovered = true;
                 closestStar.glow = closestStar.isMatvey ? 3.0 : 2.0;
+
                 hoveredStar = closestStar;
                 
-                showTooltip(closestStar, event);
+                showTooltip(closestStar, event.clientX, event.clientY);
             }
         }
         
-        function handleTouch(event) {
+        function handleTouchStart(event) {
             if (event.touches.length === 1) {
                 const touch = event.touches[0];
                 const rect = canvas.getBoundingClientRect();
@@ -1049,13 +1103,40 @@
                         minDistance = distance;
                         closestStar = star;
                     }
+
                 }
                 
-                if (closestStar && closestStar.isUserStar) {
-                    showTooltip(closestStar, touch);
-                    setTimeout(() => tooltip.style.opacity = '0', 2000);
+                if (closestStar) {
+                    closestStar.isHovered = true;
+                    closestStar.glow = closestStar.isMatvey ? 3.0 : 2.0;
+                    hoveredStar = closestStar;
+                    
+                    showTooltip(closestStar, touch.clientX, touch.clientY);
+                    
+                    // На мобильных показываем подсказку на 2 секунды
+                    if (touchTimer) clearTimeout(touchTimer);
+                    touchTimer = setTimeout(() => {
+                        tooltip.style.opacity = '0';
+                        if (hoveredStar) {
+                            hoveredStar.isHovered = false;
+                            hoveredStar.glow = hoveredStar.isUserStar ? (hoveredStar.isMatvey ? 2.0 : 1.0) : 0;
+                            hoveredStar = null;
+                        }
+                    }, 2000);
                 }
             }
+        }
+        
+        function handleTouchMove(event) {
+            if (event.touches.length === 1) {
+                const touch = event.touches[0];
+                handleTouchStart(event);
+
+            }
+        }
+        
+        function handleTouchEnd() {
+            if (touchTimer) clearTimeout(touchTimer);
         }
         
         function handleMouseLeave() {
@@ -1074,9 +1155,11 @@
             }
         }
         
-        function showTooltip(star, event) {
+        // ⭐⭐⭐ ИСПРАВЛЕННАЯ ФУНКЦИЯ ПОКАЗА ПОДСКАЗКИ ⭐⭐⭐
+        function showTooltip(star, clientX, clientY) {
             tooltip.innerHTML = star.isUserStar ? `
                 <div class="star-name">⭐ ${star.name}</div>
+
                 <div class="star-info"><strong>Класс:</strong> ${star.class}</div>
                 <div class="star-info"><strong>Ценность:</strong> ${star.value}</div>
                 <div class="star-info"><strong>Почему:</strong> ${star.reason}</div>
@@ -1085,15 +1168,40 @@
                 <div class="star-info">Нажми "Добавить свою звезду"!</div>
             `;
             
-            let x = event.clientX + 20;
-            let y = event.clientY + 20;
+            // Показываем подсказку
+            tooltip.style.opacity = '1';
             
-            if (x + tooltip.offsetWidth > window.innerWidth) x = event.clientX - tooltip.offsetWidth - 20;
-            if (y + tooltip.offsetHeight > window.innerHeight) y = event.clientY - tooltip.offsetHeight - 20;
+            // Рассчитываем позицию с учетом границ экрана
+            const tooltipWidth = tooltip.offsetWidth;
+            const tooltipHeight = tooltip.offsetHeight;
             
+            // Позиция по умолчанию (справа снизу от курсора)
+            let x = clientX + 15;
+            let y = clientY + 15;
+            
+            // Проверяем, помещается ли подсказка справа
+            if (x + tooltipWidth > window.innerWidth) {
+                // Не помещается справа - размещаем слева
+                x = clientX - tooltipWidth - 15;
+                if (x < 5) x = 5; // Минимальный отступ от края
+            }
+
+            
+            // Проверяем, помещается ли подсказка снизу
+            if (y + tooltipHeight > window.innerHeight) {
+                // Не помещается снизу - размещаем сверху
+                y = clientY - tooltipHeight - 15;
+                if (y < 5) y = 5; // Минимальный отступ от края
+            }
+            
+            // Проверяем, чтобы подсказка не выходила за верхний край
+            if (y < 5) {
+                y = 5;
+            }
+            
+            // Устанавливаем позицию
             tooltip.style.left = x + 'px';
             tooltip.style.top = y + 'px';
-            tooltip.style.opacity = '1';
         }
         
         // ⭐⭐⭐ ИСПРАВЛЕННАЯ ФУНКЦИЯ РИСОВАНИЯ ПЯТИКОНЕЧНОЙ ЗВЕЗДЫ ⭐⭐⭐
@@ -1106,6 +1214,7 @@
             // Вращение звезды
             star.rotation = star.rotation || 0;
             star.rotationSpeed = star.rotationSpeed || 0.001;
+
             star.rotation += star.rotationSpeed;
             
             // 1. Рисуем ПУЛЬСИРУЮЩЕЕ СВЕЧЕНИЕ вокруг звезды
@@ -1134,6 +1243,7 @@
             
             // Размеры для пятиконечной звезды
             const outerRadius = size;
+
             const innerRadius = size * 0.4;
             
             // Градиент для звезды
@@ -1162,6 +1272,7 @@
             // Обводка звезды
             ctx.strokeStyle = '#ffffff';
             ctx.lineWidth = 0.8;
+
             ctx.stroke();
             
             // 3. Яркий центр звезды с вращающимся эффектом
@@ -1189,6 +1300,7 @@
                 
                 // Мерцание
                 const twinkle = 0.6 + Math.sin(Date.now() * 0.001 + p.x * 0.01) * 0.4;
+
                 
                 ctx.fillStyle = `rgba(255, 255, 255, ${p.brightness * twinkle})`;
                 ctx.beginPath();
@@ -1217,6 +1329,7 @@
             
             // Обновление позиций звёзд
             for (let star of stars) {
+
                 // Звезда Матвея - плавное движение вокруг центра
                 if (star.isMatvey) {
                     const orbitX = Math.cos(time * 0.1) * 30;
@@ -1244,6 +1357,7 @@
                 }
                 
                 // Пульсация
+
                 star.pulse += star.pulseSpeed;
                 
                 drawStar(star, time);
@@ -1269,6 +1383,7 @@
                         customValueInput.style.display = 'block';
                         selectedValueInput.value = '';
                         customValueInput.focus();
+
                     } else {
                         customValueInput.style.display = 'none';
                         selectedValueInput.value = this.dataset.value;
@@ -1294,6 +1409,7 @@
                 const reason = document.getElementById('valueReason').value.trim();
                 
                 if (!name || !studentClass || !value || !reason) {
+
                     alert('Пожалуйста, заполни все поля!');
                     return;
                 }
@@ -1322,6 +1438,7 @@
             });
         }
         
+
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.style.cssText = `
@@ -1349,6 +1466,7 @@
             `;
             
             document.head.appendChild(style);
+
             notification.textContent = message;
             document.body.appendChild(notification);
             
@@ -1375,6 +1493,7 @@
         
         window.closeStats = function() {
             document.getElementById('statsOverlay').style.display = 'none';
+
         };
         
         window.openInfo = function() {
@@ -1399,6 +1518,7 @@
                 document.getElementById('myClass').textContent = lastStar.class + ' класс';
                 
                 // Подсчитываем частоту ценностей
+
                 const valueCount = {};
                 myStars.forEach(star => {
                     const value = star.value || 'Не указано';
@@ -1423,6 +1543,7 @@
                     if (count > popularCount) {
                         popularCount = count;
                         popularValue = value;
+
                     }
                 }
                 document.getElementById('popularValue').textContent = popularValue.length > 10 ? popularValue.substring(0, 10) + '...' : popularValue;
@@ -1442,7 +1563,9 @@
                             <div class="distribution-item">
                                 <span style="min-width: 100px; color: ${color}; font-weight: bold;">${displayValue}</span>
                                 <div style="flex: 1; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 0 10px; overflow: hidden;">
-                                    <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-radius: 10px;"></div>
+                                    <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-
+
+radius: 10px;"></div>
                                 </div>
                                 <span style="min-width: 70px; text-align: right; color: #aaddff; font-weight: bold;">
                                     ${count} (${percentage}%)
@@ -1461,6 +1584,7 @@
                 document.getElementById('popularValue').textContent = '-';
                 document.getElementById('myValuesDistribution').innerHTML = 
                     '<div style="color: #aaddff; text-align: center; padding: 20px;">У тебя пока нет звёзд. Добавь первую!</div>';
+
             }
         }
         
