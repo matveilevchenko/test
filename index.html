@@ -88,43 +88,52 @@
             to { transform: rotate(360deg); }
         }
         
+        /* УЛУЧШЕННЫЙ ЗАГОЛОВОК с эффектом сияния */
         .header {
             position: absolute;
             top: 15px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 40, 0.95));
-            padding: 12px;
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(15, 10, 35, 0.97));
+            padding: 14px;
+            border-radius: 15px;
             border: 2px solid;
-            border-image: linear-gradient(45deg, rgba(255, 221, 0, 0.7), rgba(255, 140, 0, 0.5)) 1;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border-image: linear-gradient(45deg, rgba(255, 100, 100, 0.7), rgba(100, 100, 255, 0.7)) 1;
+            box-shadow: 0 10px 40px rgba(100, 70, 255, 0.4),
+                        0 0 30px rgba(255, 215, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
             z-index: 200;
             text-align: center;
             width: 94%;
-            max-width: 600px;
-            backdrop-filter: blur(10px);
+            max-width: 620px;
+            backdrop-filter: blur(12px);
         }
         
         .header h1 {
-            background: linear-gradient(45deg, #ffdd00, #ff8c00);
+            background: linear-gradient(45deg, #ffdd00, #ff6666, #6699ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-size: 20px;
-            margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(255, 221, 0, 0.5);
+            font-size: 22px;
+            margin-bottom: 6px;
+            text-shadow: 0 0 15px rgba(255, 221, 0, 0.5);
             line-height: 1.2;
             font-weight: 800;
+            letter-spacing: 0.5px;
         }
         
         .header p {
-            color: #aaddff;
-            font-size: 13px;
-            line-height: 1.3;
-            opacity: 0.9;
+            background: linear-gradient(45deg, #aaddff, #66ffcc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 13.5px;
+            line-height: 1.4;
+            opacity: 0.95;
+            text-shadow: 0 0 10px rgba(170, 221, 255, 0.3);
         }
         
+        /* УЛУЧШЕННАЯ ПАНЕЛЬ УПРАВЛЕНИЯ с сиянием */
         .controls {
             position: absolute;
             bottom: 15px;
@@ -132,80 +141,132 @@
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 15px;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            gap: 12px;
+            background: rgba(5, 5, 15, 0.88);
+            padding: 18px;
+            border-radius: 18px;
+            border: 2px solid rgba(100, 150, 255, 0.25);
+            box-shadow: 0 0 60px rgba(100, 70, 255, 0.35),
+                        0 15px 40px rgba(0, 0, 0, 0.8),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
             z-index: 200;
             width: 94%;
-            max-width: 500px;
-            backdrop-filter: blur(10px);
+            max-width: 520px;
+            backdrop-filter: blur(15px);
         }
         
+        /* ОБНОВЛЁННЫЕ КНОПКИ - современная космическая тема */
         .control-btn {
-            background: linear-gradient(145deg, rgba(80, 80, 120, 0.95), rgba(50, 50, 80, 0.98));
+            background: linear-gradient(145deg, 
+                rgba(90, 60, 220, 0.95),    /* Фиолетово-синий */
+                rgba(50, 30, 150, 0.98));   /* Темно-синий */
             color: white;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 15px;
             border: none;
-            border-bottom: 3px solid rgba(255, 215, 0, 0.6);
-            padding: 14px;
-            border-radius: 12px;
+            border-bottom: 3px solid rgba(100, 200, 255, 0.8);
+            padding: 16px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(100, 70, 255, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
             letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
         }
         
         .control-btn:hover, .control-btn:active {
-            background: linear-gradient(145deg, rgba(100, 100, 150, 0.95), rgba(70, 70, 110, 0.98));
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
-            border-bottom-color: rgba(255, 215, 0, 0.9);
+            background: linear-gradient(145deg, 
+                rgba(110, 80, 240, 0.95),
+                rgba(70, 50, 180, 0.98));
+            border-bottom-color: rgba(150, 220, 255, 1);
+            box-shadow: 0 6px 25px rgba(100, 70, 255, 0.6),
+                        0 0 15px rgba(150, 220, 255, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
         
+        .control-btn:active {
+            transform: translateY(0);
+            transition: transform 0.1s;
+        }
+        
+        /* Эффект свечения при наведении */
+        .control-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+            transition: left 0.6s;
+        }
+        
+        .control-btn:hover::after {
+            left: 100%;
+        }
+        
+        /* УЛУЧШЕННАЯ КНОПКА СТАТИСТИКИ */
         .stats-btn {
-            background: linear-gradient(145deg, rgba(65, 105, 180, 0.95), rgba(45, 85, 160, 0.98));
-            border-bottom: 3px solid rgba(65, 105, 225, 0.6);
+            background: linear-gradient(145deg, 
+                rgba(70, 130, 180, 0.95),   /* Стальной синий */
+                rgba(40, 90, 140, 0.98));
+            border-bottom: 3px solid rgba(100, 180, 255, 0.8);
         }
         
         .stats-btn:hover, .stats-btn:active {
-            background: linear-gradient(145deg, rgba(85, 125, 200, 0.95), rgba(65, 105, 180, 0.98));
+            background: linear-gradient(145deg, 
+                rgba(90, 150, 200, 0.95),
+                rgba(60, 120, 170, 0.98));
+            border-bottom-color: rgba(120, 200, 255, 1);
         }
         
+        /* УЛУЧШЕННАЯ КНОПКА ИНФОРМАЦИИ */
         .info-btn {
-            background: linear-gradient(145deg, rgba(50, 180, 50, 0.95), rgba(30, 160, 30, 0.98));
-            border-bottom: 3px solid rgba(50, 205, 50, 0.6);
+            background: linear-gradient(145deg, 
+                rgba(70, 180, 70, 0.95),    /* Ярко-зеленый */
+                rgba(40, 140, 40, 0.98));
+            border-bottom: 3px solid rgba(100, 255, 100, 0.8);
         }
         
         .info-btn:hover, .info-btn:active {
-            background: linear-gradient(145deg, rgba(70, 200, 70, 0.95), rgba(50, 180, 50, 0.98));
+            background: linear-gradient(145deg, 
+                rgba(90, 200, 90, 0.95),
+                rgba(60, 160, 60, 0.98));
+            border-bottom-color: rgba(130, 255, 130, 1);
         }
         
-        /* ИСПРАВЛЕННЫЙ TOOLTIP */
+        /* УЛУЧШЕННЫЙ TOOLTIP с двойным градиентом */
         .tooltip {
             position: fixed;
-            background: rgba(0, 0, 0, 0.97);
+            background: rgba(10, 10, 30, 0.98);
             color: white;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 14px;
             font-size: 14px;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.3s;
-            border: 2px solid #ffdd00;
-            box-shadow: 0 0 40px rgba(255, 221, 0, 0.4);
-            max-width: 320px;
-            min-width: 280px;
+            transition: opacity 0.3s ease-out;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #ffdd00, #6699ff) 1;
+            box-shadow: 0 0 50px rgba(255, 221, 0, 0.6),
+                        0 0 30px rgba(100, 150, 255, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            max-width: 330px;
+            min-width: 290px;
             z-index: 10000;
             line-height: 1.4;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
         }
         
         .star-name {
@@ -213,11 +274,12 @@
             font-weight: bold;
             margin-bottom: 8px;
             font-size: 16px;
+            text-shadow: 0 0 8px rgba(255, 221, 0, 0.4);
         }
         
         .star-info {
             color: #aaddff;
-            font-size: 13px;
+            font-size: 13.5px;
             margin-bottom: 6px;
             line-height: 1.3;
         }
@@ -237,15 +299,22 @@
             overflow-y: auto;
         }
         
+        /* ОБНОВЛЁННОЕ МОДАЛЬНОЕ ОКНО */
         .modal-container {
-            background: linear-gradient(135deg, rgba(20, 20, 40, 0.98), rgba(15, 15, 35, 0.99));
-            padding: 20px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, 
+                rgba(15, 15, 40, 0.98),     /* Темно-синий */
+                rgba(25, 10, 50, 0.99));    /* Фиолетовый */
+            padding: 22px;
+            border-radius: 18px;
             width: 100%;
-            max-width: 500px;
+            max-width: 520px;
             border: 2px solid;
-            border-image: linear-gradient(45deg, rgba(255, 215, 0, 0.6), rgba(65, 105, 225, 0.6)) 1;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border-image: linear-gradient(45deg, 
+                rgba(255, 100, 100, 0.6),   /* Красный */
+                rgba(100, 100, 255, 0.6),   /* Синий */
+                rgba(100, 255, 100, 0.6)) 1; /* Зеленый */
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9),
+                        0 0 40px rgba(100, 70, 255, 0.3);
             max-height: 85vh;
             overflow-y: auto;
         }
@@ -254,299 +323,453 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
         
         .modal-header h2 {
-            color: #ffd700;
-            font-size: 20px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(45deg, #ffd700, #ff6666);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 22px;
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
             line-height: 1.2;
         }
         
+        /* УЛУЧШЕННАЯ КНОПКА ЗАКРЫТИЯ */
         .close-btn {
-            background: linear-gradient(145deg, rgba(255, 80, 80, 0.95), rgba(220, 60, 60, 0.98));
+            background: linear-gradient(145deg, 
+                rgba(255, 100, 100, 0.95), 
+                rgba(220, 60, 60, 0.98));
             color: white;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 22px;
+            font-size: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             flex-shrink: 0;
-            border-bottom: 3px solid rgba(255, 0, 0, 0.6);
+            border-bottom: 3px solid rgba(255, 0, 0, 0.7);
+            box-shadow: 0 4px 15px rgba(255, 100, 100, 0.4);
         }
         
         .close-btn:hover, .close-btn:active {
-            background: linear-gradient(145deg, rgba(255, 100, 100, 0.95), rgba(240, 80, 80, 0.98));
-            transform: scale(1.05);
+            background: linear-gradient(145deg, 
+                rgba(255, 130, 130, 0.95), 
+                rgba(240, 90, 90, 0.98));
+            transform: scale(1.1);
+            border-bottom-color: rgba(255, 50, 50, 1);
+            box-shadow: 0 6px 20px rgba(255, 100, 100, 0.6);
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             width: 100%;
         }
         
         .form-group label {
             display: block;
             margin-bottom: 10px;
-            color: #ffd700;
-            font-weight: bold;
-            font-size: 15px;
+            background: linear-gradient(45deg, #ffd700, #32cd32);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            font-size: 15.5px;
         }
         
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 12px;
-            background: rgba(10, 10, 20, 0.9);
-            border: 2px solid rgba(65, 105, 225, 0.5);
-            border-radius: 10px;
+            padding: 14px;
+            background: rgba(10, 10, 25, 0.92);
+            border: 2px solid rgba(80, 120, 255, 0.5);
+            border-radius: 12px;
             color: white;
             font-size: 15px;
             transition: all 0.3s;
             font-family: inherit;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
         }
         
         .form-group select {
-            background: rgba(10, 10, 20, 0.9) url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e") no-repeat right 12px center;
-            background-size: 18px;
-            padding-right: 40px;
+            background: rgba(10, 10, 25, 0.92) url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e") no-repeat right 14px center;
+            background-size: 20px;
+            padding-right: 45px;
         }
         
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: rgba(255, 215, 0, 0.8);
-            background: rgba(15, 15, 25, 0.95);
+            border-color: rgba(100, 200, 255, 0.9);
+            background: rgba(15, 15, 30, 0.95);
+            box-shadow: 0 0 15px rgba(100, 200, 255, 0.4),
+                        inset 0 2px 5px rgba(0, 0, 0, 0.3);
         }
         
         .form-group textarea {
-            min-height: 100px;
+            min-height: 110px;
             resize: vertical;
         }
         
+        /* УЛУЧШЕННЫЕ ОПЦИИ ЦЕННОСТЕЙ */
         .value-options {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 10px;
+            gap: 12px;
+            margin-top: 12px;
         }
         
         .value-option {
-            padding: 14px;
-            background: linear-gradient(135deg, rgba(40, 40, 70, 0.8), rgba(30, 30, 60, 0.9));
-            border: 2px solid rgba(65, 105, 225, 0.4);
-            border-radius: 10px;
+            padding: 16px;
+            background: linear-gradient(135deg, 
+                rgba(50, 50, 90, 0.85), 
+                rgba(35, 35, 75, 0.92));
+            border: 2px solid rgba(80, 120, 255, 0.4);
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
-            font-weight: bold;
+            font-weight: 700;
             color: white;
-            font-size: 14px;
+            font-size: 14.5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
         
         .value-option:hover, .value-option:active {
-            border-color: rgba(255, 215, 0, 0.6);
-            background: linear-gradient(135deg, rgba(60, 60, 100, 0.8), rgba(50, 50, 90, 0.9));
+            border-color: rgba(100, 200, 255, 0.7);
+            background: linear-gradient(135deg, 
+                rgba(70, 70, 120, 0.85), 
+                rgba(55, 55, 105, 0.92));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(100, 200, 255, 0.3);
         }
         
         .value-option.selected {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 185, 0, 0.3));
-            border-color: rgba(255, 215, 0, 0.8);
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.25), 
+                rgba(255, 185, 0, 0.35));
+            border-color: rgba(255, 215, 0, 0.9);
             color: #ffdd00;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
         }
         
+        /* УЛУЧШЕННАЯ КНОПКА ОТПРАВКИ */
         .submit-btn {
             width: 100%;
-            background: linear-gradient(45deg, #32cd32, #00ced1);
+            background: linear-gradient(45deg, #32cd32, #00ced1, #32cd32);
+            background-size: 200% 100%;
             color: black;
             border: none;
-            padding: 16px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 16.5px;
+            font-weight: 800;
             cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s;
-            border-bottom: 3px solid rgba(0, 200, 200, 0.6);
+            margin-top: 22px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 3px solid rgba(0, 200, 200, 0.8);
+            box-shadow: 0 6px 25px rgba(50, 205, 50, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: gradientMove 3s ease infinite;
+        }
+        
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
         .submit-btn:hover, .submit-btn:active {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(50, 205, 50, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(50, 205, 50, 0.6);
+            border-bottom-color: rgba(0, 230, 230, 1);
         }
         
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        /* УЛУЧШЕННЫЕ КАРТОЧКИ СТАТИСТИКИ */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 16px;
+            margin-bottom: 28px;
         }
         
         .stat-card {
-            background: linear-gradient(135deg, rgba(30, 30, 50, 0.9), rgba(20, 20, 40, 0.95));
-            padding: 15px;
-            border-radius: 12px;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, 
+                rgba(35, 35, 65, 0.92), 
+                rgba(25, 25, 55, 0.96));
+            padding: 18px;
+            border-radius: 14px;
+            border: 2px solid rgba(100, 200, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .stat-card h3 {
-            color: #ffd700;
-            margin-bottom: 10px;
-            font-size: 14px;
+            background: linear-gradient(45deg, #ffd700, #aaddff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+            font-size: 14.5px;
+            font-weight: 700;
         }
         
         .stat-value {
-            font-size: 22px;
-            font-weight: bold;
-            color: #aaddff;
-            text-shadow: 0 0 8px rgba(170, 221, 255, 0.5);
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #aaddff, #66ffcc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(170, 221, 255, 0.5);
             line-height: 1.2;
         }
         
-        /* Google Forms кнопка */
+        /* УЛУЧШЕННАЯ КНОПКА GOOGLE FORMS */
         .google-form-btn {
             width: 100%;
-            background: linear-gradient(45deg, #4285f4, #34a853);
+            background: linear-gradient(45deg, 
+                #4285f4, #34a853, #fbbc05, #ea4335);
+            background-size: 300% 100%;
             color: white;
             border: none;
-            padding: 16px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 16.5px;
+            font-weight: 800;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 18px;
             text-decoration: none;
             display: block;
             text-align: center;
-            border-bottom: 3px solid rgba(66, 133, 244, 0.6);
+            border-bottom: 3px solid rgba(66, 133, 244, 0.8);
+            box-shadow: 0 6px 25px rgba(66, 133, 244, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: googleGradient 4s ease infinite;
+        }
+        
+        @keyframes googleGradient {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 50% 50%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 50%; }
         }
         
         .google-form-btn:hover, .google-form-btn:active {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(66, 133, 244, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(66, 133, 244, 0.6);
+            border-bottom-color: rgba(66, 133, 244, 1);
         }
         
-        /* Информация для детей - стили */
+        /* Информация для детей - улучшенные стили */
         .info-block {
-            background: rgba(255,215,0,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border-left: 4px solid #ffd700;
+            background: linear-gradient(135deg, 
+                rgba(255,215,0,0.12), 
+                rgba(255,185,0,0.08));
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            border-left: 5px solid #ffd700;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.15);
         }
         
         .info-block h3 {
-            color: #ffd700;
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 16px;
+            margin-bottom: 12px;
+            font-size: 17px;
+            font-weight: 800;
         }
         
         .info-block p {
-            color: #aaddff;
+            color: #cceeff;
             margin: 0;
-            line-height: 1.4;
+            line-height: 1.5;
+            font-size: 14.5px;
         }
         
         .feature-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 15px 0;
+            gap: 12px;
+            margin: 18px 0;
         }
         
         .feature-item {
-            background: rgba(65, 105, 225, 0.1);
-            padding: 10px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, 
+                rgba(65, 105, 225, 0.15), 
+                rgba(45, 85, 185, 0.12));
+            padding: 14px;
+            border-radius: 10px;
             text-align: center;
-            font-size: 13px;
-            line-height: 1.3;
+            font-size: 13.5px;
+            line-height: 1.4;
+            border: 1px solid rgba(65, 105, 225, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, 
+                rgba(65, 105, 225, 0.2), 
+                rgba(45, 85, 185, 0.17));
         }
         
         .feature-icon {
-            font-size: 20px;
-            margin-bottom: 5px;
+            font-size: 24px;
+            margin-bottom: 8px;
             display: block;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
         }
         
         .step-list {
-            margin: 15px 0;
+            margin: 18px 0;
         }
         
         .step-item {
-            margin-bottom: 12px;
-            padding-left: 25px;
+            margin-bottom: 14px;
+            padding-left: 30px;
             position: relative;
+            font-size: 14.5px;
+            line-height: 1.5;
         }
         
         .step-item:before {
-            content: "→";
+            content: "✨";
             position: absolute;
             left: 0;
             color: #ffdd00;
             font-weight: bold;
+            font-size: 16px;
+            filter: drop-shadow(0 0 5px rgba(255, 221, 0, 0.5));
         }
         
         .distribution-list {
-            max-height: 250px;
+            max-height: 280px;
             overflow-y: auto;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
         
         .distribution-item {
             display: flex;
             align-items: center;
-            margin-bottom: 8px;
-            padding: 8px;
+            margin-bottom: 10px;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            font-size: 13px;
+            border-radius: 10px;
+            font-size: 13.5px;
+            transition: transform 0.2s;
+        }
+        
+        .distribution-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.08);
         }
         
         /* Для очень маленьких экранов */
         @media (max-width: 350px) {
-            .header h1 { font-size: 18px; }
-            .header p { font-size: 12px; }
-            .control-btn { font-size: 14px; padding: 12px; }
+            .header h1 { font-size: 19px; }
+            .header p { font-size: 12.5px; }
+            .control-btn { font-size: 14.5px; padding: 14px; }
             .value-options { grid-template-columns: 1fr; }
-            .modal-container { padding: 15px; }
+            .modal-container { padding: 18px; }
             .feature-grid { grid-template-columns: 1fr; }
-            .info-block { padding: 12px; }
+            .info-block { padding: 14px; }
         }
         
         /* Для планшетов */
         @media (min-width: 768px) {
-            .header { top: 25px; padding: 20px; max-width: 700px; }
-            .header h1 { font-size: 24px; }
-            .header p { font-size: 16px; }
-            .controls { flex-direction: row; bottom: 25px; max-width: 700px; }
-            .control-btn { min-width: 200px; font-size: 16px; }
-            .modal-container { max-width: 600px; padding: 25px; }
+            .header { 
+                top: 25px; 
+                padding: 22px; 
+                max-width: 720px; 
+                border-width: 3px;
+            }
+            .header h1 { 
+                font-size: 26px; 
+                margin-bottom: 8px;
+            }
+            .header p { 
+                font-size: 16.5px; 
+                line-height: 1.5;
+            }
+            .controls { 
+                flex-direction: row; 
+                bottom: 25px; 
+                max-width: 720px; 
+                gap: 15px;
+                padding: 22px;
+            }
+            .control-btn { 
+                min-width: 220px; 
+                font-size: 16.5px; 
+                padding: 18px;
+            }
+            .modal-container { 
+                max-width: 640px; 
+                padding: 28px;
+                border-width: 3px;
+            }
         }
         
         /* Анимации */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(25px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         
         .modal-container {
-            animation: fadeIn 0.3s ease-out;
+            animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        /* Скроллбар */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, #ffd700, #ff8c00); border-radius: 3px; }
+        /* УЛУЧШЕННЫЙ СКРОЛЛБАР */
+        ::-webkit-scrollbar { 
+            width: 8px; 
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track { 
+            background: rgba(0, 0, 0, 0.3); 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(45deg, #ffd700, #ff8c00, #6699ff); 
+            border-radius: 4px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+        ::-webkit-scrollbar-thumb:hover { 
+            background: linear-gradient(45deg, #ffdd00, #ff9900, #7788ff);
+        }
+        
+        /* Эффект частиц для фона (опционально) */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
     </style>
 </head>
 <body>
@@ -555,7 +778,7 @@
     <div class="ui">
         <div class="loading" id="loading">
             🚀 Загружаем Галактику Ценностей...
-            <div style="font-size: 14px; margin-top: 15px; color: #aaddff;">
+            <div style="font-size: 14.5px; margin-top: 15px; color: #aaddff;">
                 Проект "Мой мир ценностей"<br>
                 Гимназия им. Е.М. Примакова
             </div>
@@ -640,11 +863,11 @@
             </div>
             
             <!-- ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМА СТАТИСТИКИ -->
-            <div style="margin-bottom: 20px; display: flex; gap: 10px;">
-                <button id="personalStatsBtn" class="control-btn" style="flex: 1; background: linear-gradient(145deg, rgba(80, 80, 120, 0.95), rgba(50, 50, 80, 0.98));">
+            <div style="margin-bottom: 22px; display: flex; gap: 12px;">
+                <button id="personalStatsBtn" class="control-btn" style="flex: 1; background: linear-gradient(145deg, rgba(90, 60, 220, 0.95), rgba(50, 30, 150, 0.98));">
                     📱 Мои звёзды
                 </button>
-                <button id="googleStatsBtn" class="control-btn" style="flex: 1; background: linear-gradient(145deg, rgba(65, 105, 180, 0.95), rgba(45, 85, 160, 0.98));">
+                <button id="googleStatsBtn" class="control-btn" style="flex: 1; background: linear-gradient(145deg, rgba(70, 130, 180, 0.95), rgba(40, 90, 140, 0.98));">
                     🌐 Google Forms
                 </button>
             </div>
@@ -712,8 +935,8 @@
                 📋 ЗАПОЛНИТЬ GOOGLE ФОРМУ (для общей галактики)
             </a>
             
-            <div style="margin-top: 15px; padding: 15px; background: rgba(255, 215, 0, 0.1); border-radius: 10px;">
-                <p style="color: #ffd700; font-size: 13px; line-height: 1.4;">
+            <div style="margin-top: 18px; padding: 18px; background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 185, 0, 0.08)); border-radius: 12px; border-left: 4px solid #ffd700;">
+                <p style="background: linear-gradient(45deg, #ffd700, #32cd32); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 14px; line-height: 1.5; font-weight: 700;">
                     <strong>🌟 Две галактики:</strong><br>
                     1. <strong>Личная</strong> — твои звёзды (здесь)<br>
                     2. <strong>Общая</strong> — звёзды всей гимназии (Google Форма)
@@ -798,8 +1021,8 @@
                 📋 ПЕРЕЙТИ К GOOGLE ФОРМЕ
             </a>
             
-            <div style="margin-top: 20px; padding: 15px; background: rgba(100, 200, 255, 0.1); border-radius: 10px;">
-                <p style="color: #66ccff; font-size: 14px; line-height: 1.4;">
+            <div style="margin-top: 22px; padding: 18px; background: linear-gradient(135deg, rgba(100, 200, 255, 0.12), rgba(66, 150, 230, 0.08)); border-radius: 12px; border-left: 4px solid #66ccff;">
+                <p style="background: linear-gradient(45deg, #66ccff, #32cd32); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 14.5px; line-height: 1.5; font-weight: 700;">
                     💡 <strong>Совет:</strong> Сначала добавь свою звезду здесь,<br>
                     потом заполни Google Форму!
                 </p>
@@ -839,7 +1062,7 @@
             {name: "Андрей", class: "6", value: "Спорт", reason: "Я много лет занимаюсь спортом"},
             {name: "Саша", class: "11", value: "Справедливость", reason: ""},
             {name: "Вика", class: "7", value: "Ответственность", reason: "Ответственность важна, потому что она является фундаментом доверия и основой для осмысленных действий, которые приносят реальную пользу."},
-            {name: "Мария В", class: "7", value: "Справедливость", reason: "Так как на ней должны строиться самые важные человеческие качества"},
+            {name: "Мария В.", class: "7", value: "Справедливость", reason: "Так как на ней должны строиться самые важные человеческие качества"},
             {name: "Лиза Никифорова", class: "7", value: "Свобода", reason: ""},
             {name: "Вадим", class: "7", value: "Дружба", reason: "Без дружбы не будет других ценностей таких как уважение или справедливость"},
             {name: "Ярослав", class: "7", value: "Свобода", reason: "Свобода является основой всех других ценностей"},
@@ -1151,10 +1374,12 @@
         }
         
         function getHoveredGlow(star) {
-            if (star.isMatvey) return 3.0;
-            if (star.isGoogleStar) return 2.0;
-            if (star.isUserStar) return 2.0;
-            return 1.0;
+            let baseGlow = 2.0;
+            if (star.isMatvey) baseGlow = 3.5;
+            if (star.isGoogleStar) baseGlow = 2.5;
+            
+            // Добавляем пульсацию при наведении
+            return baseGlow + Math.sin(Date.now() * 0.005) * 0.3;
         }
         
         function handleTouchStart(event) {
@@ -1261,15 +1486,21 @@
         // ИСПРАВЛЕННАЯ ФУНКЦИЯ ПОКАЗА ПОДСКАЗКИ
         function showTooltip(star, clientX, clientY) {
             let sourceBadge = '';
+            let sourceColor = '';
             
             if (star.isGoogleStar) {
-                sourceBadge = '<div style="color: #34a853; font-size: 11px; margin-bottom: 5px; font-weight: bold;">🌐 Google Форма</div>';
+                sourceBadge = '🌐 Google Форма';
+                sourceColor = '#34a853';
             } else if (star.isUserStar) {
-                sourceBadge = '<div style="color: #ffdd00; font-size: 11px; margin-bottom: 5px; font-weight: bold;">⭐ Личная звезда</div>';
+                sourceBadge = '⭐ Личная звезда';
+                sourceColor = '#ffdd00';
+            } else if (star.isMatvey) {
+                sourceBadge = '👑 Создатель проекта';
+                sourceColor = '#ff6666';
             }
             
             tooltip.innerHTML = star.name ? `
-                ${sourceBadge}
+                ${sourceBadge ? `<div style="background: linear-gradient(45deg, ${sourceColor}, #ffffff); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 11px; margin-bottom: 8px; font-weight: 800;">${sourceBadge}</div>` : ''}
                 <div class="star-name">⭐ ${star.name}</div>
                 <div class="star-info"><strong>Класс:</strong> ${star.class}</div>
                 <div class="star-info"><strong>Ценность:</strong> ${star.value}</div>
@@ -1541,15 +1772,15 @@
             personalStatsBtn.addEventListener('click', function() {
                 personalStats.style.display = 'block';
                 googleStats.style.display = 'none';
-                personalStatsBtn.style.background = 'linear-gradient(145deg, rgba(80, 80, 120, 0.95), rgba(50, 50, 80, 0.98))';
-                googleStatsBtn.style.background = 'linear-gradient(145deg, rgba(65, 105, 180, 0.7), rgba(45, 85, 160, 0.8))';
+                personalStatsBtn.style.background = 'linear-gradient(145deg, rgba(90, 60, 220, 0.95), rgba(50, 30, 150, 0.98))';
+                googleStatsBtn.style.background = 'linear-gradient(145deg, rgba(70, 130, 180, 0.7), rgba(40, 90, 140, 0.8))';
             });
             
             googleStatsBtn.addEventListener('click', function() {
                 personalStats.style.display = 'none';
                 googleStats.style.display = 'block';
-                personalStatsBtn.style.background = 'linear-gradient(145deg, rgba(80, 80, 120, 0.7), rgba(50, 50, 80, 0.8))';
-                googleStatsBtn.style.background = 'linear-gradient(145deg, rgba(65, 105, 180, 0.95), rgba(45, 85, 160, 0.98))';
+                personalStatsBtn.style.background = 'linear-gradient(145deg, rgba(90, 60, 220, 0.7), rgba(50, 30, 150, 0.8))';
+                googleStatsBtn.style.background = 'linear-gradient(145deg, rgba(70, 130, 180, 0.95), rgba(40, 90, 140, 0.98))';
                 updateGoogleStats();
             });
         }
@@ -1563,13 +1794,16 @@
                 transform: translate(-50%, -50%);
                 background: linear-gradient(45deg, #32cd32, #00ced1);
                 color: black;
-                padding: 15px 25px;
-                border-radius: 12px;
-                font-weight: bold;
+                padding: 18px 28px;
+                border-radius: 14px;
+                font-weight: 800;
                 z-index: 10001;
-                box-shadow: 0 10px 30px rgba(50, 205, 50, 0.5);
+                box-shadow: 0 15px 35px rgba(50, 205, 50, 0.6),
+                            0 0 30px rgba(0, 206, 209, 0.5);
                 text-align: center;
-                animation: fadeInOut 2s ease-in-out;
+                animation: fadeInOut 2s cubic-bezier(0.4, 0, 0.2, 1);
+                font-size: 16px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
             `;
             
             const style = document.createElement('style');
@@ -1674,11 +1908,11 @@
                         
                         distributionHTML += `
                             <div class="distribution-item">
-                                <span style="min-width: 100px; color: ${color}; font-weight: bold;">${value}</span>
-                                <div style="flex: 1; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 0 10px; overflow: hidden;">
-                                    <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-radius: 10px;"></div>
+                                <span style="min-width: 100px; background: linear-gradient(45deg, ${color}, #ffffff); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">${value}</span>
+                                <div style="flex: 1; height: 22px; background: rgba(255,255,255,0.1); border-radius: 11px; margin: 0 12px; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);">
+                                    <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-radius: 11px; box-shadow: 0 0 10px ${color}aa;"></div>
                                 </div>
-                                <span style="min-width: 70px; text-align: right; color: #aaddff; font-weight: bold;">
+                                <span style="min-width: 75px; text-align: right; background: linear-gradient(45deg, #aaddff, #66ffcc); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">
                                     ${count} (${percentage}%)
                                 </span>
                             </div>
@@ -1739,11 +1973,11 @@
                         
                         classDistributionHTML += `
                             <div class="distribution-item">
-                                <span style="min-width: 80px; color: ${color}; font-weight: bold;">${className}</span>
-                                <div style="flex: 1; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 0 10px; overflow: hidden;">
-                                    <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-radius: 10px;"></div>
+                                <span style="min-width: 80px; background: linear-gradient(45deg, ${color}, #ffffff); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">${className}</span>
+                                <div style="flex: 1; height: 22px; background: rgba(255,255,255,0.1); border-radius: 11px; margin: 0 12px; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);">
+                                    <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-radius: 11px; box-shadow: 0 0 10px ${color}aa;"></div>
                                 </div>
-                                <span style="min-width: 70px; text-align: right; color: #aaddff; font-weight: bold;">
+                                <span style="min-width: 75px; text-align: right; background: linear-gradient(45deg, #aaddff, #66ffcc); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">
                                     ${count} (${percentage}%)
                                 </span>
                             </div>
@@ -1790,11 +2024,11 @@
                         
                         googleValuesHTML += `
                             <div class="distribution-item">
-                                <span style="min-width: 100px; color: ${color}; font-weight: bold;">${value}</span>
-                                <div style="flex: 1; height: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 0 10px; overflow: hidden;">
-                                    <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-radius: 10px;"></div>
+                                <span style="min-width: 100px; background: linear-gradient(45deg, ${color}, #ffffff); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">${value}</span>
+                                <div style="flex: 1; height: 22px; background: rgba(255,255,255,0.1); border-radius: 11px; margin: 0 12px; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);">
+                                    <div style="height: 100%; width: ${Math.max(5, percentage)}%; background: ${color}; border-radius: 11px; box-shadow: 0 0 10px ${color}aa;"></div>
                                 </div>
-                                <span style="min-width: 70px; text-align: right; color: #aaddff; font-weight: bold;">
+                                <span style="min-width: 75px; text-align: right; background: linear-gradient(45deg, #aaddff, #66ffcc); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800;">
                                     ${count} (${percentage}%)
                                 </span>
                             </div>
