@@ -5,10 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Интерактивная галактика ценностей учеников гимназии">
-    
-    <!-- УДАЛИТЕ ВСЕ CSP meta-теги! GitHub Pages сам добавляет свой -->
-    <!-- НИКАКИХ meta http-equiv="Content-Security-Policy" -->
-    
     <style>
         * { 
             margin: 0; 
@@ -580,7 +576,7 @@
         <div class="tooltip" id="tooltip"></div>
     </div>
 
-    <!-- Форма добавления звезды с ВСЕМИ атрибутами name -->
+    <!-- Форма добавления звезды -->
     <div class="overlay" id="formOverlay">
         <div class="modal-container">
             <div class="modal-header">
@@ -590,12 +586,12 @@
             <form id="starForm">
                 <div class="form-group">
                     <label for="studentName">1. Как тебя зовут?</label>
-                    <input type="text" id="studentName" name="studentName" required placeholder="Имя и фамилия">
+                    <input type="text" id="studentName" required placeholder="Имя и фамилия">
                 </div>
                 
                 <div class="form-group">
                     <label for="studentClass">2. Из какого ты класса?</label>
-                    <select id="studentClass" name="studentClass" required>
+                    <select id="studentClass" required>
                         <option value="">Выбери класс</option>
                         <option value="1">1 класс</option>
                         <option value="2">2 класс</option>
@@ -612,7 +608,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="selectedValue">3. Какая ценность для тебя важна?</label>
+                    <label>3. Какая ценность для тебя важна?</label>
                     <div class="value-options" id="valueOptions">
                         <div class="value-option" data-value="Уважение">Уважение</div>
                         <div class="value-option" data-value="Ответственность">Ответственность</div>
@@ -621,14 +617,13 @@
                         <div class="value-option" data-value="Спорт">Спорт</div>
                         <div class="value-option" id="otherOption">Другое</div>
                     </div>
-                    <input type="text" id="customValue" name="customValue" placeholder="Твоя ценность" style="display: none; margin-top: 10px;">
-                    <!-- ИСПРАВЛЕНО: добавлен атрибут name -->
-                    <input type="hidden" id="selectedValue" name="selectedValue" required>
+                    <input type="text" id="customValue" placeholder="Твоя ценность" style="display: none; margin-top: 10px;">
+                    <input type="hidden" id="selectedValue" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="valueReason">4. Почему это важно?</label>
-                    <textarea id="valueReason" name="valueReason" required placeholder="Расскажи, почему ты выбрал(а) эту ценность"></textarea>
+                    <textarea id="valueReason" required placeholder="Расскажи, почему ты выбрал(а) эту ценность"></textarea>
                 </div>
                 
                 <button type="submit" class="submit-btn">✨ СОЗДАТЬ ЗВЕЗДУ</button>
@@ -813,15 +808,13 @@
     </div>
 
     <script>
-        // УДАЛИТЕ ВСЁ ПРО GALAXY_LOADED И eval()
-        // ПРОСТОЙ И БЕЗОПАСНЫЙ КОД
-        
         // КОНФИГУРАЦИЯ
         const CONFIG = {
             INITIAL_STARS: 30,
             MAX_STAR_SIZE: 6,
             MIN_STAR_SIZE: 2,
             BACKGROUND_STARS: 150,
+            GOOGLE_FORM_URL: "https://docs.google.com/forms/d/e/1FAIpQLSd3D5ypAsFGGBfoWOAlC1230iqpuaXgvyICj43VbYReOZfNuw/viewform?pli=1",
             VALUE_COLORS: {
                 'Уважение': '#ff6666',
                 'Ответственность': '#6699ff',
@@ -835,32 +828,33 @@
             }
         };
 
-  const GOOGLE_FORM_DATA = [
-    {name: "Матвей", class: "6", value: "Свобода", reason: ""},
-    {name: "Матвей", class: "6", value: "Уважение", reason: ""},
-    {name: "СВЕТА", class: "11", value: "Свобода", reason: "Свобода позволяет быть собой!"},
-    {name: "Артемий", class: "10", value: "Дружба", reason: "Она создаёт фундамент на дальнейшую деятельность учащихся и определяет их личные ценности"},
-    {name: "Мария", class: "10", value: "Дружба", reason: "Она делает меня счастливее"},
-    {name: "Демид", class: "6", value: "Другой вариант", reason: "Я люблю деньги потому что они дают много возможностей"},
-    {name: "Андрей", class: "6", value: "Спорт", reason: "Я много лет занимаюсь спортом"},
-    {name: "Саша", class: "11", value: "Справедливость", reason: ""},
-    {name: "Вика", class: "7", value: "Ответственность", reason: "Ответственность важна, потому что она является фундаментом доверия и основой для осмысленных действий, которые приносят реальную пользу."},
-    {name: "Мария В.", class: "7", value: "Справедливость", reason: "Так как на ней должны строиться самые важные человеческие качества"},
-    {name: "Лиза Никифорова", class: "7", value: "Свобода", reason: ""},
-    {name: "Вадим", class: "7", value: "Дружба", reason: "Без дружбы не будет других ценностей таких как уважение или справедливость"},
-    {name: "Ярослав", class: "7", value: "Свобода", reason: "Свобода является основой всех других ценностей"},
-    {name: "Тимур", class: "7", value: "Дружба", reason: "друзья всегда помогут"},
-    {name: "Петрова Валерия", class: "7", value: "Дружба", reason: "Важно иметь друзей и товарищей, ведь в этом лежит основа успеха."},
-    {name: "Даниил Жегалин", class: "7", value: "Ответственность", reason: "Потому что ответственность - это когда кто - то обязуется выполнить часть задач, которые не может сделать другой. Без ответственности не было бы современного мира."},
-    {name: "София Кайтмазова", class: "7", value: "Уважение", reason: "Уважение рождает идею, полезный разговор или приятную встречу. Оно рождает все, что связано с общением — и это важно."},
-    {name: "Андрей", class: "6", value: "Спорт", reason: "Потому что я очень часто занимаюсь спортом и я его люблю"},
-    {name: "Георгий", class: "7", value: "Ответственность", reason: "Потому что это очень важный опыт с самого детства, который в будущем поможет стать лидером"},
-    {name: "Света", class: "11", value: "Справедливость", reason: ""},
-    {name: "Леша", class: "8", value: "Дружба", reason: "Потому что друзья для меня очень важны"},
-    {name: "Лука", class: "8", value: "Другой вариант", reason: ""},
-    {name: "Варя", class: "8", value: "Уважение", reason: "если мы будем все уважать друг друга то все будет уравновешенно и спокойно"},
-    {name: "Щеглов Павел", class: "8", value: "Дружба", reason: "Помогает в жизни"}
-];
+        // ДАННЫЕ ИЗ GOOGLE FORMS (Excel таблицы) - ИСПРАВЛЕННАЯ ВЕРСИЯ
+        const GOOGLE_FORM_DATA = [
+            {name: "Матвей", class: "6", value: "Свобода", reason: ""},
+            {name: "Матвей", class: "6", value: "Уважение", reason: ""},
+            {name: "СВЕТА", class: "11", value: "Свобода", reason: "Свобода позволяет быть собой!"},
+            {name: "Артемий", class: "10", value: "Дружба", reason: "Она создаёт фундамент на дальнейшую деятельность учащихся и определяет их личные ценности"},
+            {name: "Мария", class: "10", value: "Дружба", reason: "Она делает меня счастливее"},
+            {name: "Демид", class: "6", value: "Другой вариант", reason: "Я люблю деньги потому что они дают много возможностей"},
+            {name: "Андрей", class: "6", value: "Спорт", reason: "Я много лет занимаюсь спортом"},
+            {name: "Саша", class: "11", value: "Справедливость", reason: ""},
+            {name: "Вика", class: "7", value: "Ответственность", reason: "Ответственность важна, потому что она является фундаментом доверия и основой для осмысленных действий, которые приносят реальную пользу."},
+            {name: "Мария В", class: "7", value: "Справедливость", reason: "Так как на ней должны строиться самые важные человеческие качества"},
+            {name: "Лиза Никифорова", class: "7", value: "Свобода", reason: ""},
+            {name: "Вадим", class: "7", value: "Дружба", reason: "Без дружбы не будет других ценностей таких как уважение или справедливость"},
+            {name: "Ярослав", class: "7", value: "Свобода", reason: "Свобода является основой всех других ценностей"},
+            {name: "Тимур", class: "7", value: "Дружба", reason: "друзья всегда помогут"},
+            {name: "Петрова Валерия", class: "7", value: "Дружба", reason: "Важно иметь друзей и товарищей, ведь в этом лежит основа успеха."},
+            {name: "Даниил Жегалин", class: "7", value: "Ответственность", reason: "Потому что ответственность - это когда кто - то обязуется выполнить часть задач, которые не может сделать другой. Без ответственности не было бы современного мира."},
+            {name: "София Кайтмазова", class: "7", value: "Уважение", reason: "Уважение рождает идею, полезный разговор или приятную встречу. Оно рождает все, что связано с общением — и это важно."},
+            {name: "Андрей", class: "6", value: "Спорт", reason: "Потому что я очень часто занимаюсь спортом и я его люблю"},
+            {name: "Георгий", class: "7", value: "Ответственность", reason: "Потому что это очень важный опыт с самого детства, который в будущем поможет стать лидером"},
+            {name: "Света", class: "11", value: "Справедливость", reason: ""},
+            {name: "Леша", class: "8", value: "Дружба", reason: "Потому что друзья для меня очень важны"},
+            {name: "Лука", class: "8", value: "Другой вариант", reason: ""},
+            {name: "Варя", class: "8", value: "Уважение", reason: "если мы будем все уважать друг друга то все будет уравновешенно и спокойно"},
+            {name: "Щеглов Павел", class: "8", value: "Дружба", reason: "Помогает в жизни"}
+        ];
         
         // Элементы
         const canvas = document.getElementById('canvas');
@@ -869,32 +863,16 @@
         
         // Переменные
         let stars = [];
-        let userStars = [];
+        let userStars = JSON.parse(localStorage.getItem('gymnasiumValues')) || [];
         let googleFormStars = [];
         let particles = [];
         let hoveredStar = null;
         let devicePixelRatio = window.devicePixelRatio || 1;
         let touchTimer = null;
         
-        // Безопасная загрузка данных из localStorage
-        function loadUserData() {
-            try {
-                const stored = localStorage.getItem('gymnasiumValues');
-                if (stored) {
-                    userStars = JSON.parse(stored); // БЕЗ eval()
-                } else {
-                    userStars = [];
-                }
-            } catch (e) {
-                console.log('Ошибка загрузки данных, создаем новый массив');
-                userStars = [];
-            }
-        }
-        
         // Инициализация
         function init() {
             console.log("Инициализация начата");
-            loadUserData();
             setupCanvas();
             createStars(CONFIG.INITIAL_STARS);
             createBackgroundStars(CONFIG.BACKGROUND_STARS);
@@ -903,10 +881,7 @@
             
             // Скрываем загрузку
             setTimeout(() => {
-                const loading = document.getElementById('loading');
-                if (loading) {
-                    loading.style.display = 'none';
-                }
+                document.getElementById('loading').style.display = 'none';
                 animate();
             }, 1500);
             
@@ -1017,7 +992,7 @@
                 }
             });
 
-            // Сохраняем звезду Матвея в localStorage если её нет
+            // Сохраняем звезду Матвея в localStorage
             const hasMatveyStar = userStars.some(star => star.name === "Матвей Левченко");
             if (!hasMatveyStar) {
                 userStars.unshift({
@@ -1028,11 +1003,7 @@
                     timestamp: new Date().toISOString(),
                     isMatvey: true
                 });
-                try {
-                    localStorage.setItem('gymnasiumValues', JSON.stringify(userStars));
-                } catch (e) {
-                    console.log('Ошибка сохранения:', e);
-                }
+                localStorage.setItem('gymnasiumValues', JSON.stringify(userStars));
             }
         }
         
@@ -1147,7 +1118,7 @@
                 hoveredStar = null;
             }
             
-            if (tooltip) tooltip.style.opacity = '0';
+            tooltip.style.opacity = '0';
             
             let closestStar = null;
             let minDistance = Infinity;
@@ -1156,7 +1127,7 @@
                 const dx = x - star.x;
                 const dy = y - star.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                const hoverRadius = star.baseSize * 15;
+                const hoverRadius = star.baseSize * 15; // Увеличил радиус ховера
                 
                 if (distance < hoverRadius && distance < minDistance) {
                     minDistance = distance;
@@ -1220,7 +1191,7 @@
                     // На мобильных показываем подсказку на 2 секунды
                     if (touchTimer) clearTimeout(touchTimer);
                     touchTimer = setTimeout(() => {
-                        if (tooltip) tooltip.style.opacity = '0';
+                        tooltip.style.opacity = '0';
                         if (hoveredStar) {
                             hoveredStar.isHovered = false;
                             hoveredStar.glow = getDefaultGlow(hoveredStar);
@@ -1275,7 +1246,7 @@
                 hoveredStar.glow = getDefaultGlow(hoveredStar);
                 hoveredStar = null;
             }
-            if (tooltip) tooltip.style.opacity = '0';
+            tooltip.style.opacity = '0';
         }
         
         function handleStarClick() {
@@ -1289,8 +1260,6 @@
         
         // ИСПРАВЛЕННАЯ ФУНКЦИЯ ПОКАЗА ПОДСКАЗКИ
         function showTooltip(star, clientX, clientY) {
-            if (!tooltip) return;
-            
             let sourceBadge = '';
             
             if (star.isGoogleStar) {
@@ -1496,8 +1465,6 @@
         // Функции формы
         function setupForm() {
             const form = document.getElementById('starForm');
-            if (!form) return;
-            
             const valueOptions = document.querySelectorAll('.value-option');
             const customValueInput = document.getElementById('customValue');
             const selectedValueInput = document.getElementById('selectedValue');
@@ -1509,26 +1476,24 @@
                     this.classList.add('selected');
                     
                     if (this === otherOption) {
-                        if (customValueInput) customValueInput.style.display = 'block';
-                        if (selectedValueInput) selectedValueInput.value = '';
-                        if (customValueInput) customValueInput.focus();
+                        customValueInput.style.display = 'block';
+                        selectedValueInput.value = '';
+                        customValueInput.focus();
                     } else {
-                        if (customValueInput) customValueInput.style.display = 'none';
-                        if (selectedValueInput) selectedValueInput.value = this.dataset.value;
+                        customValueInput.style.display = 'none';
+                        selectedValueInput.value = this.dataset.value;
                     }
                 });
             });
             
-            if (customValueInput) {
-                customValueInput.addEventListener('input', function() {
-                    if (selectedValueInput) selectedValueInput.value = this.value;
-                    if (this.value.trim()) {
-                        valueOptions.forEach(opt => opt.classList.remove('selected'));
-                        if (otherOption) otherOption.classList.add('selected');
-                        if (customValueInput) customValueInput.style.display = 'block';
-                    }
-                });
-            }
+            customValueInput.addEventListener('input', function() {
+                selectedValueInput.value = this.value;
+                if (this.value.trim()) {
+                    valueOptions.forEach(opt => opt.classList.remove('selected'));
+                    otherOption.classList.add('selected');
+                    customValueInput.style.display = 'block';
+                }
+            });
             
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -1552,11 +1517,7 @@
                 };
                 
                 userStars.push(starData);
-                try {
-                    localStorage.setItem('gymnasiumValues', JSON.stringify(userStars));
-                } catch (e) {
-                    console.log('Ошибка сохранения:', e);
-                }
+                localStorage.setItem('gymnasiumValues', JSON.stringify(userStars));
                 
                 addStarToGalaxy(starData, 2000 + userStars.length, false);
                 closeForm();
@@ -1565,11 +1526,9 @@
                 showNotification('Твоя звезда добавлена! ✨');
                 form.reset();
                 valueOptions.forEach(opt => opt.classList.remove('selected'));
-                if (customValueInput) {
-                    customValueInput.style.display = 'none';
-                    customValueInput.value = '';
-                }
-                if (selectedValueInput) selectedValueInput.value = '';
+                customValueInput.style.display = 'none';
+                customValueInput.value = '';
+                selectedValueInput.value = '';
             });
         }
         
@@ -1579,18 +1538,16 @@
             const personalStats = document.getElementById('personalStats');
             const googleStats = document.getElementById('googleStats');
             
-            if (!personalStatsBtn || !googleStatsBtn) return;
-            
             personalStatsBtn.addEventListener('click', function() {
-                if (personalStats) personalStats.style.display = 'block';
-                if (googleStats) googleStats.style.display = 'none';
+                personalStats.style.display = 'block';
+                googleStats.style.display = 'none';
                 personalStatsBtn.style.background = 'linear-gradient(145deg, rgba(80, 80, 120, 0.95), rgba(50, 50, 80, 0.98))';
                 googleStatsBtn.style.background = 'linear-gradient(145deg, rgba(65, 105, 180, 0.7), rgba(45, 85, 160, 0.8))';
             });
             
             googleStatsBtn.addEventListener('click', function() {
-                if (personalStats) personalStats.style.display = 'none';
-                if (googleStats) googleStats.style.display = 'block';
+                personalStats.style.display = 'none';
+                googleStats.style.display = 'block';
                 personalStatsBtn.style.background = 'linear-gradient(145deg, rgba(80, 80, 120, 0.7), rgba(50, 50, 80, 0.8))';
                 googleStatsBtn.style.background = 'linear-gradient(145deg, rgba(65, 105, 180, 0.95), rgba(45, 85, 160, 0.98))';
                 updateGoogleStats();
@@ -1612,57 +1569,53 @@
                 z-index: 10001;
                 box-shadow: 0 10px 30px rgba(50, 205, 50, 0.5);
                 text-align: center;
+                animation: fadeInOut 2s ease-in-out;
             `;
             
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInOut {
+                    0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+                    20%, 80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+                }
+            `;
+            
+            document.head.appendChild(style);
             notification.textContent = message;
             document.body.appendChild(notification);
             
             setTimeout(() => {
-                notification.style.transition = 'opacity 0.5s';
-                notification.style.opacity = '0';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 500);
+                notification.remove();
+                style.remove();
             }, 2000);
         }
         
         // Модальные окна
         window.openForm = function() {
-            const formOverlay = document.getElementById('formOverlay');
-            const studentName = document.getElementById('studentName');
-            if (formOverlay) formOverlay.style.display = 'flex';
-            if (studentName) studentName.focus();
+            document.getElementById('formOverlay').style.display = 'flex';
+            document.getElementById('studentName').focus();
         };
         
         window.closeForm = function() {
-            const formOverlay = document.getElementById('formOverlay');
-            if (formOverlay) formOverlay.style.display = 'none';
+            document.getElementById('formOverlay').style.display = 'none';
         };
         
         window.openStats = function() {
-            const statsOverlay = document.getElementById('statsOverlay');
-            if (statsOverlay) {
-                updateStats();
-                updateGoogleStats();
-                statsOverlay.style.display = 'flex';
-            }
+            updateStats();
+            updateGoogleStats();
+            document.getElementById('statsOverlay').style.display = 'flex';
         };
         
         window.closeStats = function() {
-            const statsOverlay = document.getElementById('statsOverlay');
-            if (statsOverlay) statsOverlay.style.display = 'none';
+            document.getElementById('statsOverlay').style.display = 'none';
         };
         
         window.openInfo = function() {
-            const infoOverlay = document.getElementById('infoOverlay');
-            if (infoOverlay) infoOverlay.style.display = 'flex';
+            document.getElementById('infoOverlay').style.display = 'flex';
         };
         
         window.closeInfo = function() {
-            const infoOverlay = document.getElementById('infoOverlay');
-            if (infoOverlay) infoOverlay.style.display = 'none';
+            document.getElementById('infoOverlay').style.display = 'none';
         };
         
         // ИСПРАВЛЕННАЯ СТАТИСТИКА
@@ -1673,14 +1626,12 @@
             );
             
             // Общее количество личных звезд
-            const totalStarsEl = document.getElementById('totalStars');
-            if (totalStarsEl) totalStarsEl.textContent = userStarsFiltered.length;
+            document.getElementById('totalStars').textContent = userStarsFiltered.length;
             
             if (userStarsFiltered.length > 0) {
                 // Мой класс (из последней добавленной звезды)
                 const lastStar = userStarsFiltered[userStarsFiltered.length - 1];
-                const myClassEl = document.getElementById('myClass');
-                if (myClassEl) myClassEl.textContent = lastStar.class + ' класс';
+                document.getElementById('myClass').textContent = lastStar.class + ' класс';
                 
                 // Подсчет ценностей
                 const valueCount = {};
@@ -1698,8 +1649,7 @@
                         mainValue = value;
                     }
                 }
-                const myMainValueEl = document.getElementById('myMainValue');
-                if (myMainValueEl) myMainValueEl.textContent = mainValue;
+                document.getElementById('myMainValue').textContent = mainValue;
                 
                 // Находим популярную ценность
                 let popularValue = '-';
@@ -1710,8 +1660,7 @@
                         popularValue = value;
                     }
                 }
-                const popularValueEl = document.getElementById('popularValue');
-                if (popularValueEl) popularValueEl.textContent = popularValue;
+                document.getElementById('popularValue').textContent = popularValue;
                 
                 // Распределение ценностей
                 let distributionHTML = '';
@@ -1739,18 +1688,12 @@
                     distributionHTML = '<div style="color: #aaddff; text-align: center; padding: 20px;">Нет данных</div>';
                 }
                 
-                const myValuesDistributionEl = document.getElementById('myValuesDistribution');
-                if (myValuesDistributionEl) myValuesDistributionEl.innerHTML = distributionHTML;
+                document.getElementById('myValuesDistribution').innerHTML = distributionHTML;
             } else {
-                const myClassEl = document.getElementById('myClass');
-                const myMainValueEl = document.getElementById('myMainValue');
-                const popularValueEl = document.getElementById('popularValue');
-                const myValuesDistributionEl = document.getElementById('myValuesDistribution');
-                
-                if (myClassEl) myClassEl.textContent = '-';
-                if (myMainValueEl) myMainValueEl.textContent = '-';
-                if (popularValueEl) popularValueEl.textContent = '-';
-                if (myValuesDistributionEl) myValuesDistributionEl.innerHTML = 
+                document.getElementById('myClass').textContent = '-';
+                document.getElementById('myMainValue').textContent = '-';
+                document.getElementById('popularValue').textContent = '-';
+                document.getElementById('myValuesDistribution').innerHTML = 
                     '<div style="color: #aaddff; text-align: center; padding: 20px;">У тебя пока нет звёзд. Добавь первую!</div>';
             }
         }
@@ -1758,13 +1701,11 @@
         // СТАТИСТИКА GOOGLE FORMS
         function updateGoogleStats() {
             // Общее количество звёзд из Google Forms
-            const totalGoogleStarsEl = document.getElementById('totalGoogleStars');
-            if (totalGoogleStarsEl) totalGoogleStarsEl.textContent = googleFormStars.length;
+            document.getElementById('totalGoogleStars').textContent = googleFormStars.length;
             
             // Количество уникальных участников
             const uniqueParticipants = new Set(googleFormStars.map(star => star.name));
-            const totalParticipantsEl = document.getElementById('totalParticipants');
-            if (totalParticipantsEl) totalParticipantsEl.textContent = uniqueParticipants.size;
+            document.getElementById('totalParticipants').textContent = uniqueParticipants.size;
             
             if (googleFormStars.length > 0) {
                 // Распределение по классам
@@ -1783,14 +1724,13 @@
                         popularClass = className;
                     }
                 }
-                const popularClassEl = document.getElementById('popularClass');
-                if (popularClassEl) popularClassEl.textContent = popularClass;
+                document.getElementById('popularClass').textContent = popularClass;
                 
                 // Распределение по классам для графика
                 let classDistributionHTML = '';
                 const sortedClasses = Object.entries(classCount)
                     .sort((a, b) => b[1] - a[1])
-                    .slice(0, 8);
+                    .slice(0, 8); // Показываем топ-8 классов
                 
                 if (sortedClasses.length > 0) {
                     sortedClasses.forEach(([className, count]) => {
@@ -1813,13 +1753,13 @@
                     classDistributionHTML = '<div style="color: #aaddff; text-align: center; padding: 20px;">Нет данных по классам</div>';
                 }
                 
-                const classDistributionEl = document.getElementById('classDistribution');
-                if (classDistributionEl) classDistributionEl.innerHTML = classDistributionHTML;
+                document.getElementById('classDistribution').innerHTML = classDistributionHTML;
                 
                 // Распределение ценностей
                 const valueCount = {};
                 googleFormStars.forEach(star => {
                     let value = star.value;
+                    // Нормализуем значения
                     if (value === "Другой вариант") {
                         value = "Другой";
                     }
@@ -1835,14 +1775,13 @@
                         topValue = value;
                     }
                 }
-                const topGoogleValueEl = document.getElementById('topGoogleValue');
-                if (topGoogleValueEl) topGoogleValueEl.textContent = topValue;
+                document.getElementById('topGoogleValue').textContent = topValue;
                 
                 // Распределение ценностей для графика
                 let googleValuesHTML = '';
                 const sortedGoogleValues = Object.entries(valueCount)
                     .sort((a, b) => b[1] - a[1])
-                    .slice(0, 10);
+                    .slice(0, 10); // Показываем топ-10 ценностей
                 
                 if (sortedGoogleValues.length > 0) {
                     sortedGoogleValues.forEach(([value, count]) => {
@@ -1865,24 +1804,19 @@
                     googleValuesHTML = '<div style="color: #aaddff; text-align: center; padding: 20px;">Нет данных по ценностям</div>';
                 }
                 
-                const googleValuesDistributionEl = document.getElementById('googleValuesDistribution');
-                if (googleValuesDistributionEl) googleValuesDistributionEl.innerHTML = googleValuesHTML;
+                document.getElementById('googleValuesDistribution').innerHTML = googleValuesHTML;
             } else {
-                const popularClassEl = document.getElementById('popularClass');
-                const topGoogleValueEl = document.getElementById('topGoogleValue');
-                const classDistributionEl = document.getElementById('classDistribution');
-                const googleValuesDistributionEl = document.getElementById('googleValuesDistribution');
-                
-                if (popularClassEl) popularClassEl.textContent = '-';
-                if (topGoogleValueEl) topGoogleValueEl.textContent = '-';
-                if (classDistributionEl) classDistributionEl.innerHTML = 
+                document.getElementById('popularClass').textContent = '-';
+                document.getElementById('topGoogleValue').textContent = '-';
+                document.getElementById('classDistribution').innerHTML = 
                     '<div style="color: #aaddff; text-align: center; padding: 20px;">Нет данных из Google Forms</div>';
-                if (googleValuesDistributionEl) googleValuesDistributionEl.innerHTML = 
+                document.getElementById('googleValuesDistribution').innerHTML = 
                     '<div style="color: #aaddff; text-align: center; padding: 20px;">Нет данных из Google Forms</div>';
             }
         }
         
         function getClassColor(className) {
+            // Генерируем цвет на основе номера класса
             const classNumber = parseInt(className) || 1;
             const hue = (classNumber * 30) % 360;
             return `hsl(${hue}, 70%, 60%)`;
